@@ -1,0 +1,43 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper) {
+    height: 58px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+
+    .swiper {
+        margin-inline: 0;
+
+        .swiper-slide {
+            width: auto;
+            display: flex;
+    
+        .type {
+            width: fit-content;
+            height: 26px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            font-family: "PingFang SC";
+            padding-inline: 19px;
+            margin: 8px 13px 8px 0;
+            border-radius: 20px;
+            box-shadow: 0px 4px 12px 0px rgba(27, 30, 38, 0.02);
+
+            @include useTheme {
+                border: 1px solid getVar('dpBallbarBorder');
+                color: getVar('dpTutorialText');
+            }
+        }
+        
+        .active {
+            
+            @include useTheme {
+                color: getVar('dpWhite');
+                background-color: getVar('dpCombatBg');
+            }
+        }
+    }
+    }
+}

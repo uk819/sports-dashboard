@@ -1,0 +1,46 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.dpNodata) {
+  z-index: 20;
+  border-radius: 6px;
+  @include useTheme {
+    background-color: getVar('dpCard');
+  }
+  .title{
+    position: relative;
+    border-bottom: 0.5px solid rgba(getVar('dpNormal'), 0.1);
+    padding: 7px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    @include useTheme{
+      color: getVar('dpStrong');
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top:7px;
+      width: 2px;
+      height: 14px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center center;
+      background-image: url('~@this/assets/images/common/title-line.png');
+    }
+  }
+  .content{
+    width: 100%;
+    height: 115px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    @include useTheme{
+      color: getVar('dpNormal');
+    }
+  }
+}

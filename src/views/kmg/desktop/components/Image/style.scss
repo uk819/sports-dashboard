@@ -1,0 +1,13 @@
+:local(.default_team) {
+  display: inline-block;
+  background: url('./i/team.png');
+  background-size: cover;
+}
+:local(.error-wrap) {
+  > div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

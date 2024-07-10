@@ -1,0 +1,61 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+    @include useTheme {
+        background-color: getVar('dpBasicWhite');
+    }
+    display: flex;
+    justify-content: space-between;
+    height: 44px;
+    align-items: center;
+    > span {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .switch-btn {
+        display: flex;
+        align-items: center;
+        @include useTheme {
+            background: getVar('dpLayerSecondary500') !important;
+        }
+        border-radius: 20px;
+        height: 24px;
+        padding: 1px;
+        .switch-body {
+            width: fit-content;
+            > div {
+                width: auto;
+                font-size: 12px;
+                line-height: 16px;
+                padding: 4px 8px;
+            }
+            .false {
+                @include useTheme {
+                    color: getVar('dpTextInverse');
+                }
+            }
+            .up-btn {
+                border-radius: 20px;
+                @include useTheme {
+                    background: getVar('dpLayerToggleSelected');
+                    color: getVar('dpTextSubtle');
+                }
+            }
+        }
+    }
+
+    .link-ietm {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background-color: #A7AFBB;
+        height: 26px;
+        width: 98px;
+        border-radius: 13px;
+        .link-text {
+            font-size: 11px;
+            color: #FFF;
+        }
+    }
+}

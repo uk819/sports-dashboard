@@ -1,0 +1,181 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.champion_item) {
+  .play-item {
+    margin-bottom: 6px;
+    border-radius: 4px;
+    padding-bottom: 2px;
+    @include useTheme {
+      background: getVar('dpCar');
+      border-bottom: .5px solid getVar('dpDivide');
+    }
+    &:last-child {
+      margin-bottom: 10px;
+      border-bottom: none;
+    }
+    .play-name {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      line-height: 32px;
+      padding: 0 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      position: relative;
+      font-weight: 500;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 12px;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url('~@this/pages/SportGame/components/MatchDetail/i/play-game-line.png');
+      }
+    }
+  }
+  .play-content {
+    padding: 0 8px;
+  }
+  .odd-item {
+    flex: 1;
+    margin : 0 1px;
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    position: relative;
+    @include useTheme {
+      color: getVar('dpNormal');
+      background: getVar('dpForm2');
+    }
+    span:not(.odd) {
+      line-height: 1;
+    }
+    &:hover {
+      @include useTheme {
+        background: getVar('dp_odd_hover');
+      }
+    }
+    &.active:not(.disabled) {
+      @include useTheme {
+        background: getVar('dpOddActive')!important;
+        color: getVar('dp_nomal_white')!important;
+        .text-theme {
+          color: getVar('dp_nomal_white')!important;
+        }
+        .odd {
+          color: getVar('dpBasicWhite')!important;
+        }
+      }
+    }
+    .odd {
+      font-size: 12px;
+      @include useTheme {
+        color: getVar('dpStrong');
+      }
+    }
+    &.odd-item:not(.disabled).up.up {
+      @include useTheme {
+        background: getVar('dpUpBackground');
+      }
+      .odd {
+        @include useTheme {
+          color: getVar('dpUp');
+        }
+      }
+      &:after {
+        content: '';
+        width: 8px;
+        height: 12px;
+        background: url('~@this/assets/images/svg/up.png') no-repeat;
+        background-size: cover;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        animation-name: breath;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+    &.odd-item:not(.disabled).down.down {
+      @include useTheme {
+        background: getVar('dpDownBackground');
+      }
+      .odd {
+        @include useTheme {
+          color: getVar('dpDown');
+        }
+      }
+      &:after {
+        content: '';
+        width: 8px;
+        height: 12px;
+        background: url('~@this/assets/images/svg/down.png') no-repeat;
+        background-size: cover;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        animation-name: breath;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+  .play-default {
+    padding: 8px 8px 2px;
+    .odd-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;
+      position: relative;
+      margin-bottom: 2px;
+      >div:first-child {
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+      }
+      .mw-60 {
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      &:hover {
+        @include useTheme {
+          background: getVar('dp_odd_hover');
+        }
+      }
+      &.empty {
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+    .market-item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      &.one-row {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &.one-line {
+        display: flex;
+      }
+      &.col-3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+    }
+  }
+}

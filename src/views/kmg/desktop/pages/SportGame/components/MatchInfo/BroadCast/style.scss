@@ -1,0 +1,196 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.broadCast) {
+  @include useTheme{
+    background-color: getVar('dp_Card');
+  }
+  margin-top: 6px;
+  width: 830px;
+  border-radius: 4px;
+  // height: 480px;
+
+  .collapse-header{
+    width: 100%;
+    padding: 0;
+
+    .header{
+      width: 100%;
+      padding: 7px 7px 7px 10px;
+      position: relative;
+      text-align: left;
+      font-size: 13px;
+      @include useTheme{
+        color: getVar('dpStrong');
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top:7px;
+        width: 2px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-image: url('~@this/pages/SportGame/components/MatchDetail/i/title-line.png');
+      }
+    }
+  }
+  .match-statistics {
+    .header{
+      width: 100%;
+      padding: 7px 7px 7px 10px;
+      position: relative;
+      text-align: left;
+      font-size: 13px;
+      font-weight: 500;
+      @include useTheme{
+        color: getVar('dpStrong');
+        border-bottom: 0.5px solid getVar('dpDivide');
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top:7px;
+        width: 2px;
+        height: 14px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-image: url('~@this/pages/SportGame/components/MatchDetail/i/title-line.png');
+      }
+    }
+  }
+
+  .main{
+    padding: 32px;
+
+    .team-info{
+      .team-board{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 20px;
+
+        .team-item{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 12px;
+
+          .team-name{
+            @include useTheme{
+              color: getVar('dpStrong');
+            }
+            font-size: 16px;
+            font-weight: 500;
+          }
+
+          .team-mark{
+            img{
+              width: 48px;
+            }
+          }
+        }
+      }
+    }
+
+    .des{
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      .item{
+        @include useTheme{
+          background-color: getVar('dpForm2');
+        }
+        padding: 32px 32px 32px 49px;
+        margin-left: 32px;
+        position: relative;
+
+        .item-ico{
+          position: absolute;
+          left: -32px;
+          top: 16px;
+          padding: 14px 14px 12px 14px;
+          border-radius: 50%;
+          @include useTheme{
+            background-color:  getVar('dpHover');
+          }
+          &.text{
+            padding: 18px 18px 18px 19px;
+            font-size: 14px;
+            @include useTheme{
+              color: getVar('dpTheme');
+            }
+          }
+        }
+
+        .content{
+          @include useTheme{
+            color: getVar('dpNormal2');
+          }
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .event-view{
+      margin-block: 60px;
+    }
+    .event-result {
+      padding: 0 12px;
+      margin-top: 30px;
+
+      .event-overview {
+        padding: 12px 0;
+        gap: 4px;
+        display: flex;
+        justify-content: space-around;
+
+        @include useTheme {
+          border-top: 0.5px solid rgba(getVar('dpNormal'), 0.1);
+        }
+
+        .event-item {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 12px;
+          width: 58px;
+          &.event-item:nth-child(4){
+            width: 68px;
+          }
+          &.event-item:nth-child(9){
+            width: 68px;
+          }
+          &.event-item:nth-child(5){
+            width: 63px;
+            justify-content: right;
+          }
+          &.event-item:nth-child(10){
+            width: 63px;
+            justify-content: right;
+          }
+
+          .event-img {
+            width: 16px;
+            height: 16px;
+            padding-right: 4px;
+          }
+
+          .event-score {
+            @include useTheme {
+              color: getVar('dpNormal');
+            }
+          }
+        }
+      }
+    }
+  }
+}

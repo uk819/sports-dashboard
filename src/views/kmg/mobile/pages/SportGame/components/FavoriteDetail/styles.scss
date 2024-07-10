@@ -1,0 +1,13 @@
+@import '~@style/mixins/index.scss';
+:local(.favorite-detail) {
+  padding-bottom: 59px;
+  flex: 1;
+  @include useTheme {
+    background: getVar('dpBackground');
+  }
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

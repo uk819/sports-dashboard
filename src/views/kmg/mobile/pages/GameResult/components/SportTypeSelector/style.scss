@@ -1,0 +1,64 @@
+@import '~@style/mixins/index.scss';
+
+:local(.wrapper) {
+
+  height: 54px;
+  padding: 4px 0px;
+  box-sizing: border-box;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  >.sport-type-item{
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding-right: 10px;
+    &:first-child {
+      margin-left: 10px;
+    }
+    &.active {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      @include useTheme {
+        background: getVar('dpTopBackground');
+      }
+    }
+    >p{
+      @include useTheme {
+        color: getVar('dpAncillary');
+      }
+      text-align: center;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 11px; /* 100% */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &.active{
+        @include useTheme {
+          color: getVar('dpTheme');
+        }
+      }
+    }
+  }
+
+
+}

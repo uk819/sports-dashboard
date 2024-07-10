@@ -1,0 +1,255 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    overflow-y: scroll;
+    flex: 1;
+    border-radius: 16px 16px 0px 0px;
+    .detail-panel {
+      margin: 8px 6px;
+      border-radius: 6px;
+      @include useTheme {
+        background-color: getVar('dpCard');
+        border-bottom: 0.5px solid getVar('dpCardBorder');
+        color: getVar('dpStrong');
+      }
+      padding: 0 10px;
+      .panel-header {
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        @include useTheme {
+          border-bottom: 0.5px solid getVar('dpDivide');
+        }
+        p {
+          @include useTheme {
+            color:getVar('dpStrong');
+          }
+          text-align: center;
+          font-family: "PingFang SC";
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top:7px;
+          width: 2px;
+          height: 14px;
+          border-radius: 2px;
+          @include useTheme {
+            background-color: getVar('dpTheme');
+          }
+        }
+      }
+      .panel-content {
+        .content-title {
+          margin: 12px 16px 16px 12px;
+          position: relative;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          img {
+            height: 16px;
+            width: 16px;
+            margin-right: 4px;
+          }
+          .score {
+            position: absolute;
+            right: 0px;
+          }
+        }
+        .content-header, .content {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          height: 16px;
+          margin: 8px 24px 8px 12px;
+          position: relative;
+          @include useTheme{
+            border-bottom: 1px solid getVar('dpDivide');
+          }
+          .date {
+            width: 50px;
+            text-align: left;
+          }
+          .league {
+            width: 40px;
+          }
+          .team-home, .team-away {
+            width: 35px;
+          }
+          .score {
+            width: 50px;
+          }
+          .result {
+            text-align: left;
+          }
+          .sort {
+            position: absolute;
+            width: 4px;
+            height: 8px;
+            right: -5px;
+            bottom: 10px;
+          }
+          @include useTheme {
+            color: getVar('dpAncillary');
+          }
+          text-align: center;
+          font-family: "PingFang SC";
+          font-size: 10px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 22px;
+        }
+        .content {
+          position: relative;
+          font-family: "DIN Pro";
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 22px;
+          &:last-child {
+            border: 0px;
+          }
+          height: 16px;
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          .date {
+            font-family: "PingFang SC";
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: -1px;
+          }
+          .league, .score {
+            font-family: 'DINPro';
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 16px;
+            text-transform: uppercase;
+          }
+          .team-away, .team-home {
+            &.win {
+              @include useTheme {
+                color: getVar('dpStrong');
+              }
+            }
+            &.defeat {
+              @include useTheme {
+                color: getVar('dpNormal');
+              }
+            }
+          }
+          .result {
+            &.win {
+              @include useTheme {
+                color: getVar('dpRed');
+              }
+            }
+            &.defeat {
+              @include useTheme {
+                color: getVar('dpGreen');
+              }
+            }
+          }
+        }  
+      }
+      &.ranking {
+        .panel-content {
+          .content-header, .content {
+            text-align: left;
+            .rank {
+             width: 35px; 
+            }
+            .team {
+              width: 175px;
+            }
+            .defeat-status, .win-status {
+              width: 35px;
+              text-align: left;
+            }
+            .rate {
+              text-align: right;
+              min-width: 45px;
+            }
+          }
+          .content> .rank > .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 20px;
+            @include useTheme {
+              background-color: getVar('dpAncillary');
+            }
+            text-align: center;
+          }
+        }
+        .panel-footer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 8px 20px;
+          @include useTheme {
+            color: getVar('dpNormal');
+          }
+          font-family: "PingFang SC";
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 12px;
+          position: relative;
+          .footer {
+            width: 24px;
+            text-align: center;
+          }
+          .down {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            bottom: -2px;
+            right: calc(50% - 28px);
+          }
+        }
+        .panel-tool {
+          display: flex;
+          justify-content: center;
+          .same {
+            @include useTheme {
+              background: getVar('dpBackground');
+            }
+            width: 120px;
+            display: flex;
+            margin-right: 10px;
+            justify-content: space-between;
+            div {
+              margin: 6px 10px;
+            }
+          }
+          .near {
+            display: flex;
+            border-radius: 5px;
+            @include useTheme {
+              background: getVar('dpBackground');
+            }
+            padding: 2px;
+            div {
+              padding: 6px 10px;
+              width: 30px;
+              text-align: center;
+              border-radius: 4px;
+              &.active {
+                @include useTheme {
+                  background: getVar('dpBasicWhite');
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+}

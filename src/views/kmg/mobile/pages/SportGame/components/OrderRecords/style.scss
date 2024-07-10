@@ -1,0 +1,459 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+  width: 305px;
+  display: flex;
+  height: 100%;
+  overflow-y: auto;
+  flex-direction: column;
+  align-items: center;
+  animation: slideInUpOrderRecords 0.3s ease-in-out;
+  .placeholder{
+    padding-top: 89px;
+  }
+  .hide {
+    animation: scorllDownAnimation 0.3s ease-in-out;
+    opacity: 0;
+    height: 0px;
+    margin: 0px;
+  }
+  @keyframes scorllDownAnimation {
+    0%{
+      opacity: 1;
+      height: 40px;
+      transform: translateY(0px);
+    }
+    100%{
+      opacity: 0;
+      height: 0px;
+      transform: translateY(-40px);
+    }
+  }
+  .display {
+    animation: scorllUpAnimation 0.3s ease-in-out;
+    display: block;
+  }
+  @keyframes scorllUpAnimation {
+    0%{
+      opacity: 0;
+      height: 0px;
+      transform: translateY(-40px);
+    }
+    100%{
+      opacity: 1;
+      height: 40px;
+      transform: translateY(0);
+    }
+  }
+  > div {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .blue {
+    @include useTheme {
+      color: getVar('dpTheme');
+    }
+  }
+
+  .red {
+    @include useTheme {
+      color: getVar('dpRed');
+    }
+  }
+
+  .order-card {
+    border-radius: 16px;
+    padding: 21px 0 16px 0;
+    margin-bottom: 10px;
+    @include useTheme {
+      background-color: getVar('dpOrderCard');
+      background-image: getVar('dpOrderCardBg');
+      color: getVar('dpStrong');
+    }
+
+    &.group-orders {
+      border-radius: 16px;
+      padding: 0 0 16px 0;
+      margin-bottom: 10px;
+      @include useTheme {
+        background-color: getVar('dpOrderCard');
+        background-image: getVar('dpOrderCardBg');
+        color: getVar('dpStrong');
+      }
+
+      .group-orders-type {
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+        padding: 8px 18px;
+        background: linear-gradient(98deg, #37ABFF 18.1%, #3586FF 54.91%);
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+
+        @include useTheme {
+          color: getVar('dpBasicWhite');
+        }
+
+        > div {
+          width: 16px;
+          height: 18px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #fff;
+          margin-right: 6px;
+        }
+      }
+
+      .orders-node-list {
+        display: flex;
+        flex-direction: column;
+        padding-top: 18px;
+        padding-inline: 13px;
+
+        .node-item {
+          display: flex;
+
+          .node-icon-and-line {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 8px;
+
+            .node-icon {
+              width: 5px;
+              height: 5px;
+              border-width: 2px;
+              border-style: solid;
+              border-radius: 50%;
+              position: relative;
+              @include useTheme {
+                border-color: getVar('dpTheme');
+              }
+            }
+
+            .node-icon::after {
+              content: '';
+              position: absolute;
+              left: 50%;
+              width: 2px;
+              transform: translateX(-50%);
+              @include useTheme {
+                background-color: getVar('dpTheme');
+              }
+            }
+
+            .node-line {
+              width: 2px;
+              height: 50px;
+              flex-grow: 1;
+              @include useTheme {
+                background-color: getVar('dpTheme');
+              }
+            }
+          }
+          
+          .node-content {
+            flex-grow: 1;
+            > .l-1 {
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 14px;
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 8px;
+
+              @include useTheme {
+                color: getVar('dpStrong');
+              }
+
+              .odd-val {
+                @include useTheme {
+                  color: getVar('dpTheme');
+                }
+              }
+            }
+            > .l-2 {
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 12px;
+              margin-bottom: 8px;
+
+              @include useTheme {
+                color: getVar('dpStrong');
+              }
+            }
+            > .l-3 {
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 12px;
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 8px;
+
+              @include useTheme {
+                color: getVar('dpStrong');
+              }
+            }
+            > .l-4 {
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 12px;
+              display: flex;
+              justify-content: space-between;
+              padding-bottom: 16px;
+
+              @include useTheme {
+                color: getVar('dpNormal');
+              }
+            }
+            .bet-win {
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 12px;
+
+              @include useTheme {
+                color: getVar('dpTheme');
+              }
+            }
+            .bet-win {
+              font-size: 12px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: 12px;
+
+              @include useTheme {
+                color: getVar('dpRed');
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-empty {
+      padding: 58px 0 55px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 16px;
+      @include useTheme {
+        background-color: getVar('dpOrderCard');
+        background-image: getVar('dpOrderCardBg');
+        color: getVar('dpStrong');
+      }
+
+      > img {
+        width: 160px;
+        height: 136px;
+        margin-bottom: 48px;
+      }
+      > p {
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 14px;
+        @include useTheme {
+          color: getVar('dpNormal');
+        }
+
+        &:nth-child(2) {
+          margin-bottom: 16px;
+        }
+
+        a {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    .order-match-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      padding: 0 12px;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 12px;
+      margin-bottom: 20px;
+
+      div:nth-child(1),
+      div:nth-child(3) {
+        width: 40%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      div:nth-child(2) {
+        width: 16px;
+      }
+    }
+
+    .order-match-info {
+      background: linear-gradient(156deg, #37ABFF 11.57%, #3586FF 76.85%);
+      padding: 12px 47px;
+      margin: 0 12px;
+      border-radius: 6px;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #fff;
+
+      > div:nth-child(1) {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 13px;
+      }
+
+      > div:nth-child(2) {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        margin-top: 12px;
+        .play-name{
+          margin-right: 14px;
+        }
+        span {
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+        }
+      }
+
+      > div:nth-child(3) {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        margin-top: 12px;
+      }
+      > div:nth-child(4) {
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        margin-top: 12px;
+      }
+      .space{
+        margin: 0 5px;
+      }
+    }
+
+    .order-match-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 12px;
+      margin-bottom: 18px;
+      padding: 0 12px;
+
+      > .order-match-id {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        
+        > div:nth-child(1) {
+          margin-right: 5px;
+        }
+      }
+
+      > div:nth-child(1) {
+        text-align: right;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    .order-match-button {
+      border-radius: 6px;
+      border: 1px solid;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 12px;
+      text-align: center;
+      padding: 10px 2px;
+      cursor: pointer;
+      margin: 0 12px;
+      -webkit-tap-highlight-color: transparent;
+  
+      @include useTheme {
+        color: getVar('dpTheme');
+        border-color: getVar('dpTheme');
+      }
+    }
+
+    .order-match-tips {
+      display: flex;
+      justify-content: right;
+      text-align: right;
+      font-size: 10px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 10px;
+      padding: 0 12px;
+      @include useTheme {
+        color: getVar('dpNormal');
+      }
+
+      img {
+        width: 10px;
+        height: 10px;
+        margin-left: 4px;
+      }
+    }
+  }
+  .order-list-wrap {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .close-btn {
+    position: absolute;
+    right: 0;
+    top: -36px;
+  }
+  .type-header {
+    border-radius: 20px;
+    .main-switch {
+      padding: 3px;
+      height: auto;
+      button {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+
+:local(.bg){
+  width: 100%;
+  height: 100vh;
+}
+
+@keyframes slideInUpOrderRecords {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

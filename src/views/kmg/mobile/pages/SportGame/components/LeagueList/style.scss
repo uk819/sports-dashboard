@@ -1,0 +1,226 @@
+@import '~@style/mixins/index.scss';
+
+:local(.wrapper){
+  position: relative;
+  padding-bottom: 30px;
+  >.play-type-wrapper{
+    display: flex;
+    height: 24px;
+    padding: 0 14px;
+    justify-content: space-between;
+    align-items: center;
+    @include useTheme {
+      // border-top: 0.5px solid getVar('dpDivide');
+      color: getVar('dpStrong');
+      background-color: getVar('dpTopBackground');
+    }
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    &.in-play {
+      @include useTheme {
+        border-top: 2px solid rgba(getVar('dpTheme'), .4);
+      }
+    }
+    &.upcoming {
+      @include useTheme {
+        border-top: 2px solid rgba(getVar('dpRed'), .4);
+      }
+    }
+    &.is-closed {
+      img.arrow {
+        transform: rotate(-180deg);
+      }
+      >div.name {
+        >div:first-child {
+          transform: rotate(-90deg);
+        }
+      }
+      .collect-wrapper > div {
+        transform: rotate(-90deg);
+      }
+    }
+    >img.arrow{
+      width: 12px;
+      height: 12px;
+      transition: .2s ease;
+    }
+    >div.name{
+      display: flex;
+      align-items: center;
+      img {
+        display: block;
+        width: 14px;
+        margin-right: 4px;
+      }
+      >div:first-child {
+        margin-right: 6px;
+        transition: .2s;
+      }
+      >div:not(:first-child){
+        width: 14px;
+        height: 14px;
+        margin-right: 5px;
+      }
+      span.count{
+        @include useTheme {
+          color: getVar('dpAncillary');
+        }
+        font-size: 10px;
+        font-weight: 400;
+      }
+    }
+    img{
+      margin-right: 2px;
+    }
+  }
+  .series-icon {
+    position: fixed;
+    right: 10px;
+    bottom: 80px;
+    z-index: 4;
+    em{
+      position: absolute;
+      text-align: center;
+      line-height: 16px;
+      font-size: 13px;
+      top: -5px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 16px;
+      background: #ED4949;
+      stroke-width: 0.68px;
+      stroke: #FFF;
+      color: #fff;
+      border: 2px solid #fff;
+    }
+  }
+}
+.collect-wrapper {
+  width: 20px;
+  height: 16px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include useTheme {
+    background: getVar('gameBg');
+  }
+  > div {
+    transition: transform .2s;
+  }
+}
+
+:local(.leagueItem){
+  margin: 5px;
+  border-radius: 8px;
+  @include useTheme {
+    background: getVar('leagueItemBg');
+    border: .5px solid getVar('borderInverse');
+  }
+  .league-wrapper{
+    display: flex;
+    align-items: center;
+    height: 28px;
+    box-sizing: border-box;
+    padding-right: 12px;
+    border-radius: 6px 6px 0px 0px;
+    position: sticky;
+    top: 24px;
+    z-index: 2;
+    @include useTheme {
+      border-bottom: 0.5px solid getVar('dpDivide');
+      background: getVar('leagueFixedItemBg');
+      &.is-closed {
+        border-radius: 6px;
+        border-bottom: none;
+        .league-info {
+          .league-name {
+            width: auto;
+          }
+        }
+      }
+    }
+    >.league-info{
+      display: flex;
+      padding: 0 10px;
+      position: relative;
+
+      &::before{
+        content: "";
+        width: 2px;
+        height: 14px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+        background-image: url('~@this/assets/images/common/title-line.png');
+      }
+      &.league-info-novisible::before {
+        content: none;
+      }
+      img{
+        width: 14px;
+        height: 14px;
+      }
+      span.league-name{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+      }
+    }
+  }
+  .match-items-wrapper{
+    .match-placeholder{
+      height: 120px;
+    }
+    .match-beginner-placeholder{
+      height: 82px;
+    }
+  }
+  .match-box {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+    position: sticky;
+    top: 52px;
+    z-index: 2;
+    @include useTheme {
+      background: getVar('leagueItemBg');
+    }
+    .name-list {
+      height: 18px;
+      align-items: center;
+      width: 220px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  .match-title{
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+    .name-list {
+      display: flex;
+      .label {
+        font-size: 10px;
+        font-weight: 400;
+        flex: 1;
+        text-align: center;
+      }
+    }
+  }
+}

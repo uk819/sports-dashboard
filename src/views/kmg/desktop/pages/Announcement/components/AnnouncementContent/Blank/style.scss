@@ -1,0 +1,22 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  width: 160px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    text-align: center;
+    font-family: "PingFang SC";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+  }
+  flex-direction: column;
+  margin: auto;
+}

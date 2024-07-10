@@ -1,0 +1,314 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  width: 220px;
+  // overflow-y: auto;
+  @include useTheme {
+    background: getVar('dpCar');
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  @keyframes fadeInUp {
+    0% {
+        opacity: 0.5;
+        transform: translate3d(0,10px,0)
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0,0,0)
+    }
+  }
+  .fade-enter-active{
+    animation: fadeInUp;
+    animation-duration :0.3s;
+    animation-timing-function: linear;
+  }
+  .fade-exit-active{
+    display: none;
+  }
+
+  .go-back {
+    padding: 5px 12px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    cursor: pointer;
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    @include useTheme {
+      border-bottom: 0.5px solid getVar('dpDivide');
+      background: getVar('dp_record_go_back_btn');
+      color: getVar('dpStrong');
+    }
+    box-sizing: border-box;
+    svg{
+      margin-right: 4px;
+      margin-top: 1px;
+    }
+    span{
+      line-height: 14px;
+    }
+  }
+  > div.infos {
+    display: flex;
+    height: 52px;
+    padding: 14px 14px 0;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border-radius: 4px 4px 0px 0px;
+    flex-shrink: 0;
+    @include useTheme {
+      background: getVar('dp_Card');
+      color: getVar('dpStrong');
+    }
+    .content {
+      > div.name {
+        margin-top: auto;
+        font-size: 12px;
+        line-height: 12px;
+      }
+      > div.balance {
+        display: flex;
+        align-items: center;
+        margin-top: 11px;
+        font-family: DINPro;
+        @include useTheme {
+          color: getVar('dpTheme');
+        }
+        span {
+          margin-right: 5px;
+          font-weight: 600;
+          line-height: 1;
+          font-size: 16px;
+        }
+        .pointer {
+          height: 16px;
+          display: flex;
+          align-items: center;
+        }
+        img.eye {
+          width: 16px;
+          height: 16px;
+          margin-right: auto;
+          cursor: pointer;
+        }
+        img.refresh {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+        }
+        > div.refresh {
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  > div.hide-display {
+      display: none;
+  }
+  > div.menus {
+    @include useTheme {
+      background: getVar('dpCar');
+    }
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    display: flex;
+    flex-direction: column;
+    .scroll-list-wrapper {
+      flex: 1;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      padding-bottom: 20px;
+    }
+    .collapse-header {
+      border-bottom: none;
+    }
+    div.menu-item{
+      flex-shrink: 0;
+      position: relative;
+      height: 40px;
+      padding: 4px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      cursor: pointer;
+      overflow: hidden;
+      background-position: center;
+      transition: background 0.8s;
+      box-sizing: border-box;
+      &::before {
+        top: 0;
+        left: 0;
+        width: 100%;
+        content: "";
+        opacity: 0;
+        height: 100%;
+        position: absolute;
+        transform: scale(8);
+        transition: transform 0.5s, opacity 0.5s;
+        pointer-events: none;
+        @include useTheme {
+          background: radial-gradient(circle, #a1a1a1 10%, transparent 10.01%);
+        }
+      }
+      &:active::before {
+        opacity: 0.3;
+        transition: 0s;
+        transform: scale(0, 0);
+      }
+      &.theme-active {
+        @include useTheme {
+          background: getVar('dpTheme');
+          color: getVar('dpBasicWhite');
+          .count {
+            color: getVar('dpBasicWhite');
+          }
+        }
+      }
+      &.active:not(.sport-type) {
+        position: relative;
+        @include useTheme {
+          background: getVar('dpMenuActiveBg');
+          span.count {
+            color: getVar('dpTheme');
+          }
+          &.league-item .name {
+            color: getVar('dpNormal')!important;
+          }
+        }
+        position: relative;
+        &:not(.league-item):not(.sport-type):after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0px;
+          height: 100%;
+          width: 2px;
+          // @include useTheme {
+          //   background-color: getVar('dpTheme');
+          // }
+        }
+      }
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: 3.5px;
+      }
+      .ant-image {
+        img {
+          width: 16px;
+          height: auto;
+        }
+      }
+      &.sport-type {
+        span.name {
+          font-weight: 500;
+          // @include useTheme {
+          //   color: getVar('dpMatchTypeActive');
+          // }
+        }
+        &.active {
+          @include useTheme {
+            color: getVar('dpTheme');
+            border-bottom: 1px solid getVar('dpDivide');
+            .count {
+              color: getVar('dpTheme');
+            }
+          }
+        }
+      }
+      span.name {
+        margin-right: auto;
+        width: 135px;
+        font-weight: 500;
+        @include ellipsis;
+
+        &.league {
+          @include useTheme {
+            color: getVar('dpNormal');
+          }
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      span.count {
+        @include useTheme {
+          color: getVar('dpNormal');
+        }
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+      .star-active{
+        svg{
+          color: #3586FF;
+        }
+      }
+      &.league-item {
+        height: 34px;
+        span.count {
+          font-weight: 500;
+          font-size: 12px;
+        }
+        &.league-group-name {
+          font-size: 12px;
+          font-weight: 600;
+          padding-left: 12px;
+          position: relative;
+          justify-content: flex-start;
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+          > div:first-child {
+            margin-right: 5px;
+            transition: .2s;
+            transform: translateY(-1px) rotate(0deg);
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .spin-active svg {
+    animation: spin 1s ease-in-out;
+  }
+  .is-closed {
+    .league-group-name {
+      > div:first-child {
+        transform: translateY(-1px) rotate(-90deg)!important;
+      }
+    }
+  }
+  .empty-wrapper {
+    padding-top: 140px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

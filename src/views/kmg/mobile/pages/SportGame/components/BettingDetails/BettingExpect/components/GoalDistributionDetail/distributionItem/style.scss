@@ -1,0 +1,77 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    position: relative;
+    width: fit-content;
+    height: 43px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        content: '';
+        width: 343px;
+        height: 0.5px;
+        margin: 0 10px;
+        @include useTheme {
+            background-color: getVar('dpDivide');
+          }
+    }
+    
+    .content {
+        width: 54px;
+        height: 43px;
+        display: flex;
+        align-items: center;
+        font-family: "PingFang SC";
+        font-size: 12px;
+        text-align: center;
+        padding-left: 10px;
+
+        span {
+            height: 22px;
+            display: flex;
+            align-items: center;
+            border-radius: 3px;
+            padding: 0 10px;
+            @include useTheme {
+                background-color: getVar('dpPromptBackground');
+            }
+        }
+    }
+
+    span {
+        font-size: 10px;
+        padding: 1px 14;
+        font-family: DINPro;
+        font-size: 13px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .value-0 {
+        width: 47px;
+    }
+
+    .value-1 {
+        width: 57px;
+    }
+
+    .value-2 {
+        width: 48px;
+    }
+
+    .value-3 {
+        width: 47px;
+    }
+
+    .value-4 {
+        width: 53px;
+    }
+
+    .value-5 {
+        width: 57px;
+    }
+
+}

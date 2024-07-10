@@ -1,0 +1,18 @@
+@import '~@style/mixins/index.scss';
+
+:local(.nameWrapper){
+  .swiper-slide{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  span.label{
+    text-align: center;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+  }
+}

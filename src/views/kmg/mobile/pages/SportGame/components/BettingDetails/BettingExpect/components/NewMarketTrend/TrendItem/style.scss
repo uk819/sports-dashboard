@@ -1,0 +1,135 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    position: relative;
+    width: fit-content;
+    height: 45px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-family: 'PingFang SC';
+
+    &::before {
+        position: absolute;
+        top: 0;
+        content: '';
+        width: 343px;
+        height: 0.5px;
+        margin: 0 10px;
+        @include useTheme {
+            background-color: getVar('dpDivide');
+          }
+    }
+
+    .date-event {
+        width: 71px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-size: 11px;
+
+        .date {
+            height: 22px;
+            display: flex;
+            align-items: center;
+            padding: auto;
+            font-family: 'DIN Pro';
+        }
+
+        .league-name {
+            @include useTheme {
+                color: getVar('dpAncillary');
+            }
+        }
+    }
+
+    .home-name {
+        width: 61px;
+        text-align: right;
+        font-size: 11px;
+    }
+
+    .score {
+        width: 50px;
+        font-family: 'DIN Pro';
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .away-name {
+        width: 61px;
+        text-align: left;
+        font-size: 11px;
+        margin-right: 40px;
+    }
+
+    .handicap {
+        width: 40px;
+
+        .value {
+            font-family: 'DIN Pro';
+            font-size: 12px;
+            color: #F6B73D;
+
+            &.win {
+                color: #ED4949;
+            }
+
+            &.lose {
+                color: #24C23D;
+            }
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            height: 16px;
+            margin: auto;
+            font-size: 10px;
+            color: #FFF;
+            padding: 0 3px;
+            border-radius: 2px;
+            background-color: #F6B73D;
+
+            &.win {
+                background-color: #ED4949;
+            }
+
+            &.lose {
+                background-color: #24C23D;
+            }
+        }
+    }
+
+    .over-under {
+        width: 40px;
+
+        .value {
+            font-family: 'DIN Pro';
+            font-size: 12px;
+
+            &.lose {
+                color: #24C23D;
+            }
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            height: 16px;
+            margin: auto;
+            font-size: 10px;
+            color: #FFF;
+            padding: 0 3px;
+            border-radius: 2px;
+            background-color: #ED4949;
+
+            &.lose {
+                background-color: #24C23D;
+            }
+        }
+    }
+    
+}

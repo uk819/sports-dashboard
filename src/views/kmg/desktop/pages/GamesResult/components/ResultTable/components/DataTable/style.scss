@@ -1,0 +1,175 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  overflow: auto;
+  
+  .body-row {
+    display: flex;
+    align-items: stretch;
+    border: none;
+    
+    border-radius: 4px;
+    
+    &:not(.opened) {
+      margin-bottom: 10px;
+      @include useTheme{
+        background: getVar('dpCar');
+      }      
+    }
+    &.opened {
+      @include useTheme{
+        background: getVar('dpHover');
+      }
+    }
+
+    >span {
+      display: flex;
+      align-items: center;
+      @include useTheme {
+        color: getVar('dpStrong');
+        border-right: 0.5px solid getVar('dp_divide');
+      }
+      &.wide-element {
+        padding-left: 15px;
+        padding-right: 15px;
+        &:first-of-type {
+          width: 130px;
+        }
+        &:not(:first-of-type) {
+          width: 200px;
+        }
+      }
+      &:not(.wide-element) {
+        flex: 1;
+      }
+    }
+  }
+
+  .header {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+    @include useTheme {
+      background: getVar('dpBackground');
+    }
+
+    .body-row {
+      >span {
+        height: 34px;
+        font-size: 14px;
+        line-height: 14px;
+
+        &.contain-filtering {
+          gap: 4px;
+        }
+
+        &:not(.wide-element) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  .table-body {
+    position: relative;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-record {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .collapse-opened {
+      margin-bottom: 10px;
+    }
+
+    .collapse-header {
+      border: none;
+      padding: 0;
+
+      .body-row {
+        cursor: pointer;
+        width: 100%;
+        // min-height: 70px;
+      
+        >span {
+          font-size: 12px;
+
+          &.wide-element {
+            &.contain-view-icon {
+              display: flex;
+              justify-content: flex-start;
+              align-items: center;
+              gap: 10px;
+            }
+
+            &.league-title {
+              display: flex;
+              justify-content: start;
+              align-items: center;
+              gap: 10px;
+    
+              img {
+                width: 18px;
+                height: 18px;
+              }
+
+              >span {
+                line-break: auto;
+                line-height: 1.8;
+              }
+            }
+
+            &.match-title {
+              align-items: flex-start;
+              padding: 5px 15px;
+
+              span {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                min-height: 30px;
+                line-height: 1.8;
+                flex: 1;
+
+                img {
+                  width: 18px;
+                  height: 18px;
+                }
+              }
+            }
+          }
+ 
+          &.render-array {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 2;
+
+            &:not(.wide-element) {
+              align-items: center;          
+            }
+            &.full-time-goal {
+              @include useTheme {
+                color: getVar('dpTheme');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

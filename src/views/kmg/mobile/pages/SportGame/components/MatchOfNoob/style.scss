@@ -1,0 +1,180 @@
+@import '~@style/mixins/index.scss';
+
+:local(.wrapper) {
+  padding: 12px 10px;
+  box-sizing: border-box;
+  font-size: 12px;
+  @include useTheme {
+    border-bottom: 0.5px solid getVar('dpDivide');
+  }
+  position: relative;
+  .match-noob-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 15px;
+    line-height: 15px;
+    margin-bottom: 10px;
+    position: relative;
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+    .status-text {
+      font-size: 11px;
+    }
+    .match-status {
+      font-size: 11px;
+      display: flex;
+      align-items: flex-end;
+      .match-score {
+        margin-left: 4px;
+        font-size: 10px;
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+      }
+      &.is-live {
+        @include useTheme {
+          color: getVar('dpStrong');
+          font-size: 12px;
+        }
+      }
+    }
+    .media-box {
+      display: flex;
+      align-items: center;
+      > div {
+        margin-right: 6px;
+      }
+      &:nth-child(3) {
+        justify-content: flex-end;
+        > div {
+          margin-right: 0;
+          margin-left: 2px;
+        }
+      }
+    }
+  }
+  .match-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 44px;
+    .score {
+      width: 64px;
+      box-sizing: border-box;
+      padding: 0 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        text-align: center;
+        margin: 0 10px;
+      }
+      span {
+        flex: 1;
+        text-align: right;
+        &:last-child {
+          text-align: left;
+        }
+      }
+    }
+    .team {
+      display: flex;
+      align-items: center;
+      &:first-child {
+        .team-name {
+          text-align: right;
+          margin-right: 5px;
+          justify-content: flex-end;
+        }
+        .red-card {
+          margin-right: 3px;
+        }
+      }
+      &:last-child {
+        .team-name {
+          margin-left: 5px;
+        }
+        .red-card {
+          margin-left: 3px;
+        }
+      }
+      .team-name {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+      }
+      .team-name span:not(.red-card) {
+        width: 120px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .red-card {
+        font-weight: normal;
+        width: 11px;
+        height: 14px;
+        font-size: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 2px;
+        background: #E94343;
+        color: #fff;
+      }
+    }
+    .ant-image .ant-image-placeholder {
+      > div {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+  .match-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .collect-box {
+    position: absolute;
+    left: 10px;
+    bottom: 22px;
+  }
+  .odds {
+    display: flex;
+    width: 260px;
+    &.is-esports {
+      .name {
+        display: none;
+      }
+    }
+    > div {
+      flex: 1;
+      height: 32px;
+      margin-right: 2px;
+      box-sizing: border-box;
+      @include useTheme {
+        background: getVar('dpForm2');
+        border: 0.5px solid getVar('footerBorderColor');
+      }
+      box-shadow: none;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+  .total-count {
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+  }
+}

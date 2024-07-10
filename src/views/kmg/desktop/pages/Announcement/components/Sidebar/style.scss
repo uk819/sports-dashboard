@@ -1,0 +1,21 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  width: 220px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  @include useTheme {
+    background: getVar('dpCar');
+  }
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px 4px 0 0;
+  @include useTheme {
+    border-right-color: getVar('dpDivide');
+  }
+  border-right-width: 1px;
+  border-right-style: solid;
+}

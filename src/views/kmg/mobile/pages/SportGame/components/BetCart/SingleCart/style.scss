@@ -1,0 +1,180 @@
+@import '~@style/mixins/index.scss';
+:local(.singleBetWrapper){
+  @keyframes blink  {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+  >div.add-mitch{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    width: 100%;
+    height: 38px;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    @include useTheme {
+      color:getVar('dpTheme');
+      background:getVar('dpForm1');
+      border: 0.5px solid getVar('footerBorderColor');
+    }
+  }
+  >div.money-input{
+    height: 38px;
+    display: flex;
+    justify-content: space-between;
+    >div.title{
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      box-sizing: border-box;
+      border-radius: 6px;
+      width: 253px;
+      line-height: 1;
+      justify-content: flex-start;
+      font-size: 16px;
+      padding-left: 10px;
+      padding-right: 10px;
+      @include useTheme {
+        color:getVar('dpStrong');
+        background:getVar('dpForm1');
+        border: 0.5px solid getVar('footerBorderColor');
+      }
+      .hide{
+        display: none;
+      }
+      em:nth-child(1){
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 14px;    
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 14px;
+        @include useTheme {
+          color:getVar('dpNormal');
+        }
+      }
+      em:nth-child(3){
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);        
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 14px;
+        opacity: 0.6;
+        @include useTheme {
+          color:getVar('dpStrong');
+        }
+      }
+    }
+    .reserve-in{
+      display: flex;
+      height: 38px;
+      width: 86px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: #3586FF;
+      box-sizing: border-box;
+      font-size: 13px;
+      color: #fff;
+      &::before{
+        content: "";
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+        background-image: url('./i/cross.svg');
+        background-size: cover;
+      }
+      @include useTheme {
+        background:getVar('dpTheme');
+      }
+    }
+    .reserve-out{
+      display: flex;
+      height: 38px;
+      width: 86px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      box-sizing: border-box;
+      font-size: 13px;
+      color: #fff;
+      @include useTheme {
+        color: getVar('dpTheme');
+        border: 1px solid getVar('dpTheme');
+      }
+    }
+  }
+  .reserve-input{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px 7px 10px;
+    margin-top: 12px;
+    border-radius: 6px;
+    @include useTheme {
+      background: getVar('dpInputBackground');
+    }
+    .unvisiable{
+      visibility: hidden;
+    }
+    .c1,.c3{
+      font-family: "PingFang SC";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      @include useTheme {
+        color: getVar('dpStrong');
+      }
+    }
+    .c2{
+      span:nth-child(1){
+        text-align: right;
+        font-family: "PingFang SC";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 14px; /* 100% */
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+      }
+      span:nth-child(2){
+        text-align: right;
+        font-family: DINPro;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 14px; /* 100% */
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+      }
+    }
+  }
+  .cursor{
+    height: 16px;
+    line-height: 1px;
+    border-left: 2px solid #3586FF;
+    animation: blink 1s infinite;
+  }
+  @keyframes blink  {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+  }
+}

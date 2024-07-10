@@ -1,0 +1,51 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+    height: 36px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    .ant-input-affix-wrapper {
+        padding: 0 2px 0 12px;
+        border-radius: 4px;
+        height: 36px;
+        border: 0;
+        font-size: 12px;
+        line-height: 12px;
+        box-shadow: none;
+        outline: none;
+        @include useTheme {
+            background: getVar('dpCar');
+        }
+        .ant-input-prefix {
+            width: 20px;
+            display: flex;
+            justify-content: center;
+            margin-inline-end: 6px;
+            .refresh {
+                svg {
+                    > path {
+                        &:first-child {
+                            fill: transparent;
+                        }
+                        &:last-child {
+                            @include useTheme {
+                                fill: getVar('dpAncillary');
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+        .ant-input-suffix {
+            .search-close {
+                @include useTheme {
+                    color: getVar('dpNormal');
+                }
+            }
+            > div {
+                padding: 5px 10px;
+            }
+        }
+    }
+}

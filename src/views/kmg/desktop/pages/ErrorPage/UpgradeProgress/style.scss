@@ -1,0 +1,82 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.upgreadeProgress) {
+  height: calc(100% - 6px);
+  &.dark {
+    background-image: url('./../i/back_dark.webp');
+  }
+  background-image: url('./../i/back_dark.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+
+  .body{
+    padding-top: 165px;
+    display: flex;
+    justify-content: center;
+    gap: 52px;
+
+    .detail{
+      .logo{
+        margin: auto;
+      }
+
+      .title{
+        font-size: 54px;
+        font-weight: 500px;
+        @include useTheme{
+          color : getVar('dpStrong');
+        }
+        padding: 31px 0;
+      }
+
+      .sub{
+        display: flex;
+        flex-flow: column;
+        gap: 18px;
+        margin-bottom: 47px;
+
+        .sub-title{
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          gap: 8px;
+          font-size: 22px;
+          font-weight: 400;
+          @include useTheme{
+            color: getVar('dpStrong');
+          }
+        }
+
+        .sub-content{
+          display: flex;
+          flex-flow: column;
+          gap: 18px;
+          @include useTheme{
+            color: getVar('dpNormal2');
+          }
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 24px;
+
+          .from{
+            @include useTheme{
+              color: getVar('dpTheme');
+            }
+          }
+
+          &.maintenance{
+            margin-left: 25px;
+            ul{
+              li{
+                list-style: disc;
+              }
+            }
+          }
+
+
+        }
+      }
+    }
+  }
+}

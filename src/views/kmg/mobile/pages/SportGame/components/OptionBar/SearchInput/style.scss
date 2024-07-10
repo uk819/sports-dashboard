@@ -1,0 +1,149 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper){
+    display: flex;
+    justify-content: center;
+    > span {
+        border: 0 !important;
+        .ant-input-prefix {
+            margin-inline-end: 6px;
+            margin-top: 2px;
+            svg {
+                @include useTheme {
+                    fill: getVar('dpAncillary');
+                }
+            }
+        }
+        input {
+            border: 0 !important;
+            font-size: 12px!important;
+            font-weight: 500;
+        }
+        svg {
+          font-size: 15px!important;
+        }
+    }
+    .cancel-icon {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      @include useTheme {
+        color: getVar('dpNormal');
+      }
+    }
+}
+
+:local(.dropdownwrapper){
+    transform: translateY(-5px);
+    .ant-dropdown-arrow::before {
+        @include useTheme {
+            background-color: getVar('dpInputBackground');
+        }
+    }
+    .ant-dropdown-menu {
+        @include useTheme {
+            background-color: getVar('dpInputBackground');
+        }
+        > div {
+            padding: 3px;
+        }
+        .ant-dropdown-menu-item:hover {
+            @include useTheme {
+                background-color: getVar('dpPromptBackground');
+            }
+        }
+    }
+}
+:local(.modal) {
+    > div {
+        display: flex;
+        align-items: flex-end;
+    }
+    .search-match-wrapper {
+        height: 90%;
+        transition: all 0.4s ease;
+        transform: translateZ(0);
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        display: flex;
+        flex-direction: column;
+        @include useTheme {
+            background: getVar('dpTopBackground');
+        }
+        &.open {  
+            transform: translateY(0);
+        }
+        &.close {
+            transform: translateY(100%);
+        }
+        .main-wrap {
+            flex: 1;
+            overflow-y: auto;
+        }
+        .search-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 16px 20px;
+            .title {
+                font-size: 14px;
+
+            }
+        }
+        .search-input {
+            width: 343px;
+            height: 40px;
+            border-radius: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            margin-left: 16px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            @include useTheme {
+                background: getVar('dpInputBackground');
+            }
+            input {
+                font-size: 12px;
+            }
+            .ant-input-prefix {
+                @include useTheme {
+                    color: getVar('dpNormal');
+                }
+            }
+        }
+        .search-match-type {
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            @include useTheme {
+                background: getVar('dpPlayTypeBg');
+            }
+            .clear {
+                @include useTheme {
+                    color: getVar('dpNormal');
+                    font-size: 10px;
+                }
+            }
+        }
+        .search-history {
+            .search-item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        .search-item {
+            padding: 10px 16px;
+            @include useTheme {
+                border-bottom: .5px solid getVar('dpDivide');
+                color: getVar('dpNormal');
+            }
+            p:nth-child(2) {
+                margin-top: 6px;
+            }
+        }
+    }
+}

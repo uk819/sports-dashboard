@@ -1,0 +1,10 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+  padding-bottom: 59px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

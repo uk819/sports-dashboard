@@ -1,0 +1,169 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    width: 363px;
+    height: calc(100% - 68px);
+    display: flex;
+    flex-direction: column;
+    margin: 8px 6px 0 6px;
+    @include useTheme {
+        background-color: getVar('dpCard');
+    }
+
+    .types {
+        width: fit-content;
+        height: 24px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        margin-left: 60px;
+        @include useTheme {
+            color: getVar('dpAncillary');
+        }
+
+        span {
+            font-size: 10px;
+        }
+
+        .type {
+            width: 40px;
+        }
+
+        .home {
+            width: 34px;
+        }
+
+        .draw {
+            width: 40px;
+        }
+
+        .away {
+            width: 34px;
+        }
+
+        .home-win-rate {
+            width: 42px;
+        }
+
+        .draw-rate {
+            width: 33px;
+        }
+
+        .away-win-rate {
+            width: 40px;
+        }
+
+        .return-rate {
+            width: 40px;
+        }
+    
+    }
+
+    .detail {
+        width: fit-content;
+        flex: 1;
+        overflow-y: scroll;
+
+        .index {
+            position: relative;
+            width: 100%;
+            height: 68px;
+            display: flex;
+            align-items: center;
+
+            &::before {
+                position: absolute;
+                top: 0;
+                content: '';
+                width: 343px;
+                height: 0.5px;
+                margin: 0 10px;
+                @include useTheme {
+                    background-color: getVar('dpDivide');
+                    }
+                }
+
+            .name {
+                width: 60px;
+                font-size: 10px;
+                text-align: left;
+
+                    p {
+                        padding-left: 10px;
+                    }
+            }
+
+            .items {
+                flex: 1;
+
+                .item {
+                    width: fit-content;
+                    height: 34px;
+                    display: flex;
+                    align-items: center;
+
+                    &.border {
+                        position: relative;
+                        &::before {
+                            position: absolute;
+                            bottom: 0;
+                            content: '';
+                            width: 293px;
+                            height: 0.5px;
+                            margin-right: 10px;
+                            @include useTheme {
+                                background-color: getVar('dpDivide');
+                                }
+                        }
+                    }
+
+                    span {
+                        font-family: "DIN Pro";
+                        font-size: 11px;
+                        font-weight: 500;
+                        line-height: 200%;
+                        letter-spacing: -1px;
+                    }
+
+                    .type {
+                        width: 40px;
+                        font-family: 'PingFang SC';
+                        font-weight: 400;
+                        letter-spacing: normal;
+                    }
+            
+                    .home {
+                        width: 34px;
+                        color: #ED4949;
+                    }
+            
+                    .draw {
+                        width: 40px;
+                    }
+            
+                    .away {
+                        width: 34px;
+                        color: #24C23D;
+                    }
+            
+                    .home-win-rate {
+                        width: 42px;
+                        color: #ED4949;
+                    }
+            
+                    .draw-rate {
+                        width: 33px;
+                    }
+            
+                    .away-win-rate {
+                        width: 40px;
+                        color: #24C23D;
+                    }
+            
+                    .return-rate {
+                        width: 40px;
+                    }
+                }
+            }
+        }
+    }
+}

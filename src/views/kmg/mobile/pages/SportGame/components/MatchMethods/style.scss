@@ -1,0 +1,331 @@
+@import "~@style/mixins/index.scss";
+
+:local(.wrapper) {
+  padding: 0 10px;
+  min-height: 120px;
+  box-sizing: border-box;
+  position: relative;
+  @include useTheme {
+    border-bottom: 0.5px solid getVar("dpDivide");
+    &:last-child {
+      margin-bottom: 0;
+      border-bottom: none;
+    }
+  }
+  > .phase {
+    left: 10px;
+    top: 0;
+    display: flex;
+    padding: 3px 0px;
+    justify-content: space-between;
+    align-items: center;
+    height: 16px;
+    line-height: 1;
+    @include useTheme {
+      color: getVar("dpNormal");
+    }
+    font-size: 12px;
+    img {
+      width: 14px;
+      height: 14px;
+      margin-right: 5px;
+    }
+  }
+
+  > .match-info {
+    display: flex;
+    justify-content: space-between;
+    height: 102px;
+    padding-bottom: 10px;
+    .bd-list {
+      display: grid!important;
+      grid-template-columns: repeat(3, 1fr)!important;
+      gap: 2px;
+      .odd-item {
+        flex-direction: column;
+      }
+      .name {
+        line-height: 1.2;
+      }
+    }
+    .bodan-swiper.swiper-slide {
+      flex-direction: column;
+      justify-content: flex-start;
+      .bodan-list{
+        display:  flex;
+        .game-name {
+          background: none !important;
+          border: none !important;
+          flex: auto;
+          height: auto !important;
+          text-align: center;
+          width: 70px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin-bottom: 5px;
+          @include useTheme {
+              color: getVar('dpNormal');
+          }
+          &:first-child{
+            // margin-left: 15px;
+            // margin-right: 37px;
+          }
+          &:last-child {
+            // margin-left: 20px;
+          }
+    
+        }
+      }
+    }
+    
+    .bd-list {
+      width: 100% !important;
+      display: flex;
+      flex-wrap: wrap ;
+      flex-direction: row !important;
+      align-items: normal;
+      align-content: flex-start;
+      .odd-item, .disabled {
+        padding: 0 8px;
+        line-height: 31px;
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      }
+    }
+    > .infos {
+      width: 36%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      overflow: hidden;
+      .team-list {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .team {
+        display: flex;
+        height: 32px;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding-right: 10px;
+        margin-bottom: 4px;
+        @include useTheme {
+          color: getVar("dpStrong");
+        }
+        > span {
+          font-size: 14px;
+        }
+        .team-name {
+          display: flex;
+          align-items: center;
+          > span {
+            margin-left: 4px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            max-width: 84px;
+            display: inline-block;
+          }
+        }
+        .red-card {
+          font-weight: normal;
+          width: 11px;
+          height: 14px;
+          font-size: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 2px;
+          background: #e94343;
+          color: #fff;
+          margin-left: 3px;
+          text-align: center;
+        }
+      }
+      .teamName {
+        margin-top: 22px;
+        .team-name:first-child {
+          margin-bottom: 10px;
+        }
+        span {
+          margin-left: 4px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 90px;
+          display: inline-block;
+        }
+      }
+      > .media {
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        min-width: 100px;
+        img {
+          width: 15px;
+          margin-right: 2px;
+        }
+        .media-list {
+          display: flex;
+          align-items: center;
+        }
+        .total-count {
+          display: flex;
+          align-items: center;
+          font-size: 8px;
+          margin-right: 10px;
+          @include useTheme {
+            color: getVar("dpNormal");
+          }
+        }
+      }
+      .btn-list {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 2px;
+        height: 18px;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        .btn {
+          height: 20px;
+          box-sizing: border-box;
+          width: 40px;
+          font-size: 10px;
+          margin-right: 4px;
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          cursor: pointer;
+          padding-left: 2px;
+          border-radius: 4px;
+          border: 1px solid transparent ;
+          @include useTheme {
+            @if $currentTheme == 'light' {
+              background: linear-gradient(180deg, #FFF 0%, #F5F7FA 100%);
+              box-shadow: 0px 1px 2px 0px rgba(181, 182, 189, 0.25);
+            } @else {
+              background: linear-gradient(180deg, #333642 0%, #2E323E 100%);
+              box-shadow: 0px 1px 2px 0px rgba(21, 22, 25, 0.25);
+            }
+            border: 1px solid getVar("footerBorderColor");
+            color: getVar('dpStrong');
+          }
+          &:last-child {
+            margin-right: 2px;
+          }
+          &.active {
+            @include useTheme {
+              color: getVar('dpTheme');
+              border-color: getVar('dpTheme');
+            }
+          }
+        }
+        .arrow {
+          cursor: pointer;
+          display: flex;
+          width: 10px;
+          height: 10px;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          @include useTheme {
+            border-right: 0.5px solid getVar("dpDivide");
+          }
+          &.close-all-matchs {
+            transform-origin: center center;
+            transform: scale(.8) rotate(90deg);
+            transition: all 0.2s linear;
+          }
+          &.open-all-matchs {
+            transform-origin: center center;
+            transform: scale(.8) rotate(270deg);
+            transition: all 0.2s linear;
+          }
+        }
+      }
+    }
+    > .odds {
+      width: 64%;
+      position: relative;
+      .swiper {
+        padding-bottom: 14px;
+      }
+      .swiper-pagination {
+        bottom: 4px;
+        @include useTheme {
+          .swiper-pagination-bullet {
+            width: 6px;
+            height: 2px;
+            border-radius: 1px;
+            background: getVar("dpNormal");
+            margin: 0 2px;
+            &-active {
+              width: 8px;
+              background: getVar("dpTheme");
+            }
+          }
+        }
+      }
+      .swiper-slide {
+        > div {
+          > div {
+            height: 32px;
+            box-sizing: border-box;
+            flex-shrink: 0;
+            @include useTheme {
+              background: getVar("dpForm2");
+            }
+          }
+          .odd-item {
+            min-height: 32px;
+            padding: 0 8px;
+          }
+        }
+        > div:last-child {
+          .odd-item {
+            padding: 0 10px 0 8px;
+          }
+        }
+      }
+    }
+  }
+  .competition-type {
+    position: absolute;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 10px;
+  }
+  .match-info-sub {
+    height: auto;
+    .odds {
+      margin-top: 26px;
+    }
+    .infos {
+      position: relative;
+      padding-top: 22px;
+    }
+  }
+  .match-info-badan {
+    flex-direction: column;
+    .odds {
+      margin-top: 5px;
+    }
+    .play-content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .odd-item, .disabled {
+      padding: 2px;
+      height: auto;
+    }
+  }
+}

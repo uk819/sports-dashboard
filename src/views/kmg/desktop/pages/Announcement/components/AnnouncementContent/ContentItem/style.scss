@@ -1,0 +1,46 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  width: 95%;
+  @include useTheme {
+    background: getVar('dpCar');
+    border-bottom: 0.5px solid getVar('dpDivide');
+  }
+  .content-title{
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 12px;
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+  }
+  .content-content{
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 11px;
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+  }
+  .content-created{
+    font-family: DINPro;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+    margin-top: 8px; 
+    padding-bottom: 8px;
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+  }
+}

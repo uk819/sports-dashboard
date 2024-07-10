@@ -1,0 +1,16 @@
+:local(.champion_item) {
+  .bet-group-item.bet-group-item.bet-group-item {
+    .play-name {
+      margin-top: 0;
+      font-size: 11px;
+      background: none;
+      height: 22px;
+      padding-left: 10px;
+      justify-content: flex-start;
+      font-weight: 400;
+      .actions {
+        display: none;
+      }
+    }
+  }
+}

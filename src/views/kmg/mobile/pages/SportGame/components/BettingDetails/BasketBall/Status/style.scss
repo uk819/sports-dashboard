@@ -1,0 +1,231 @@
+@import '~@style/mixins/index.scss';
+
+:local(.wrapper){
+  margin: 12px 6px 0px 6px;
+  flex: 1;
+  overflow-y: auto;
+ .detail-panel {
+  border-radius: 6px;
+  @include useTheme {
+    background-color: getVar('dpCard');
+    border: 0.5px solid getVar('dpCardBorder');
+    color: getVar('dpStrong');
+  }
+
+  .panel-header {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    @include useTheme {
+      border-bottom: 0.5px solid getVar('dpDivide');
+    }
+    p {
+      @include useTheme {
+        color:getVar('dpStrong');
+      }
+      text-align: center;
+      font-family: "PingFang SC";
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 500;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top:7px;
+      width: 2px;
+      height: 14px;
+      border-radius: 2px;
+      @include useTheme {
+        background-color: getVar('dpTheme');
+      }
+    }
+  }
+  .panel-content {
+    padding: 12px;
+    .teams {
+      display: flex;
+      height: 16px;
+      justify-content: space-between;
+      .team {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        > p {
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          font-family: "PingFang SC";
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 16px;
+        }
+        .team-circle {
+          width: 6px;
+          height: 6px;
+          border-radius: 6px;
+        }
+        &.home > .team-circle {
+          margin-right: 4px;
+          @include useTheme {
+            background: getVar('dpTheme');
+          }
+
+        }
+        &.away {
+          flex-direction: row-reverse;
+          > .team-circle {
+            margin-left: 4px;
+            @include useTheme {
+              background: getVar('dpRed');
+            }
+          }
+        }
+      }
+    }
+    .match-status-rate {
+      display: flex;
+      margin-top: 24px;
+      height: 95px;
+      justify-content: space-around;
+      .status-rate {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        >p {
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          font-family: "PingFang SC";
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 16px;
+        }
+        .pie-chart {
+          height: 80px;
+        }
+        .label {
+          .home {
+            position: absolute;
+            bottom: 32px;
+            right: 70px;
+          }
+          .away {
+            position: absolute;
+            bottom: 32px;
+            left: 70px;
+          }
+        }
+      }
+    }
+    .match-fouls {
+      margin: 15px 90px;
+      display: flex;
+      justify-content: space-between;
+      .match-foul {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+        font-family: "PingFang SC";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        .status {
+          margin-top: 6px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          img {
+            width: 8px;
+            height: 8px;
+            margin: 0px 8px;
+          }
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          font-family: "DINPro";
+          font-size: 12px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 16px;
+        }
+      }
+    }
+    .match-score {
+      .time-goal-detail {
+        padding-bottom: 12px;
+        .time-goal {
+          display: flex;
+          justify-content: space-between;
+        }
+        .time-detail {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+ }
+  .color-red {
+    @include useTheme {
+      color: getVar('dpRed');
+    }
+  }
+  .color-yellow {
+    @include useTheme {
+      color: getVar('dpYellow');
+    }
+  }
+  .color-green {
+    @include useTheme {
+      color: getVar('dpGreen');
+    }
+  }
+  .color-strong {
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+  }
+  .text-normal {
+    @include useTheme {
+      color: getVar('dpNormal')
+    }
+  }
+  .text-ancillary {
+    @include useTheme {
+      color: getVar('dpAncillary')
+    }
+  }
+  .text-12 {
+    font-family: "PingFang SC";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 14px;
+    margin-top: 6px;
+  }
+  .text-10 {
+    font-family: "PingFang SC";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 12px;
+    margin-top: 6px;
+  }
+  a.canvasjs-chart-credit {
+    display: none;
+  }
+}

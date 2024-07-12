@@ -4,11 +4,84 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+
   @include useTheme {
     background: getVar('dpCar');
   }
-
+  .snooker-options {
+    width: calc(100% - 32px);
+    height: 104px;
+    display: flex;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin: 20px 22px 0px 10px;
+    // border-right: 0.5px solid var(--DP_divide, #EBEDF1);
+    @include useTheme {
+      color: getVar('dp_tip_notice_modal_title_color');
+      background: getVar('dpar');
+    }
+    .title {
+      width: 303px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-left: 20px;
+      font-family: 'PingFang SC';
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 12px;
+      @include useTheme {
+        background: getVar('dpBackground1');
+        border-right: 0.5px solid getVar('dpDivide');
+      }
+    }
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      font-family: DINPro;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 14px;
+      @include useTheme {
+        background: getVar('dpBackground1');
+        // border-right: 0.5px solid getVar('dpDivide');
+      }
+      .content-header {
+        height: 34px;
+        display: flex;
+        @include useTheme {
+          border-bottom: 0.5px solid getVar('dpDivide');
+        }
+        > div {
+          width: 40px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-right: 0.5px solid transparent;
+        }
+      }
+      .content-detail {
+        height: 70px;
+        display: flex;
+        > div {
+          width: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          box-sizing: border-box;
+          padding: 11px 20px;
+          gap: 20px;
+          @include useTheme {
+            border-right: 0.5px solid getVar('dpDivide');
+          }
+        }
+      }
+    }
+  }
   .view-options {
     display: flex;
     width: fit-content;
@@ -18,22 +91,22 @@
       background: getVar('dpButton');
     }
 
-    >span {
+    > span {
       display: flex;
       padding: 6px 11px;
       justify-content: center;
       align-items: center;
       gap: 10px;
       border-radius: 30px;
-      @include useTheme {
-        color: getVar('dpNormal');
-      }
       text-align: center;
       font-size: 12px;
+      font-family: 'PingFang SC';
       font-style: normal;
       font-weight: 400;
       line-height: 12px; /* 100% */
-
+      @include useTheme {
+        color: getVar('dpNormal');
+      }
       &.active {
         @include useTheme {
           background: getVar('dpTheme');
@@ -48,7 +121,7 @@
     align-items: center;
     margin: 0 15px 26px;
 
-    >span {
+    > span {
       padding: 55px 8px;
     }
 
@@ -75,7 +148,7 @@
             position: absolute;
             top: 14px;
             left: 10px;
-            color: #FFF;
+            color: #fff;
             text-align: center;
             font-family: DINPro;
             font-size: 14px;
@@ -89,7 +162,7 @@
             z-index: 1;
             margin: auto 0;
           }
-  
+
           img {
             position: absolute;
             top: 0;
@@ -109,8 +182,8 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
             &.show {
               display: flex;
             }
@@ -124,26 +197,61 @@
             }
           }
         }
-        }
+      }
     }
   }
 
   .view-details {
     display: flex;
     flex-direction: column;
+    font-size: 14px;
+    font-family: 'PingFang SC';
     gap: 4px;
-    margin: 0 10px 26px;
+    margin: 10px 10px 26px;
+    @include useTheme {
+      color: getVar('dp_tip_notice_modal_title_color');
+    }
 
     .event {
       display: flex;
       gap: 4px;
+      .full {
+        grid-template-columns: 1003px !important;
+      }
+      .type-value {
+        display: grid;
+        // grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));‘
+        grid-template-columns: 500px 500px;
+        gap: 4px;
+        .full-last {
+          width: 964px !important;
+        }
+        p {
+          display: flex;
+          padding: 13px 20px;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 4px;
+          @include useTheme {
+            background: getVar('dpHover');
+          }
+          span > span.has-value {
+            @include useTheme {
+              color: getVar('dpTheme');
+            }
+          }
 
-      >div {
+          span.win {
+            color: var(--DP_up, #f16b6b);
+          }
+        }
+      }
+      .type-name {
         display: flex;
         padding: 13px 20px;
         justify-content: space-between;
         align-items: center;
-        flex: 1 0 0;
+        width: 360px;
         border-radius: 4px;
         @include useTheme {
           background: getVar('dpHover');
@@ -156,7 +264,7 @@
         }
 
         span.win {
-          color: var(--DP_up, #F16B6B);
+          color: var(--DP_up, #f16b6b);
         }
       }
     }
@@ -165,5 +273,14 @@
   .no-record {
     margin-top: 20px;
     margin-bottom: 20px;
+    .ant-empty-image {
+      width: 140px;
+      height: 140px;
+      margin: 0;
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 }

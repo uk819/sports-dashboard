@@ -65,11 +65,12 @@ export const football = {
 export const basketball = {
   [EGameResult.Q1G]: {title: 'Q1'},
   [EGameResult.Q2G]: {title: 'Q2'},
-  [EGameResult.FHG]: {title: '上半场'},
   [EGameResult.Q3G]: {title: 'Q3'},
   [EGameResult.Q4G]: {title: 'Q4'},
-  [EGameResult.SHG]: {title: '下半场'},
   [EGameResult.OTG]: {title: '加时'},
+  [EGameResult.FHG]: {title: '上'},
+  [EGameResult.SHG]: {title: '下'},
+  [EGameResult.OT_SECOND_HALF]: {title: '下&加时'},
   [EGameResult.FTG]: {title: '总分'},
 };
 
@@ -81,7 +82,7 @@ export const tennis = {
   [EGameResult.Q4G]: {title: '4'},
   [EGameResult.Q5G]: {title: '5'},
   [EGameResult.TGAMES]: {title: '总局数'},
-  [EGameResult.SET]: {title: '赛盘'},
+  [EGameResult.SET]: {title: '盘分'},
 };
 
 // 斯诺克（5）
@@ -103,18 +104,20 @@ export const volleyball = {
 
 // 橄榄球（9）
 export const rugby = {
-  [EGameResult.HTG]: {title: '半场'},
+  [EGameResult.FHG]: {title: '上半场'},
+  [EGameResult.SHG]: {title: '下半场'},
   [EGameResult.OTG]: {title: '加时'},
-  [EGameResult.PSO]: {title: '点球大战'},
+  [EGameResult.PSO]: {title: '点球'},
   [EGameResult.FTG]: {title: '全场'},
 };
 
 // 手球 (11)
 export const handball = {
-  [EGameResult.HTG]: {title: '半场'},
+  [EGameResult.FHG]: {title: '上半场'},
+  [EGameResult.SHG]: {title: '下半场'},
   [EGameResult.FTG]: {title: '全场'},
   [EGameResult.OTG]: {title: '加时'},
-  [EGameResult.PSO]: {title: '点球大战'},
+  [EGameResult.PSO]: {title: '点球'},
 };
 
 // 冰球（12）
@@ -123,8 +126,8 @@ export const iceHockey = {
   [EGameResult.Q2G]: {title: '2'},
   [EGameResult.Q3G]: {title: '3'},
   [EGameResult.OTG]: {title: '加时'},
-  [EGameResult.PSO]: {title: '点球大战'},
-  [EGameResult.FG]: {title: '总分'},
+  [EGameResult.PSO]: {title: '点球'},
+  [EGameResult.FG]: {title: '全场'},
 };
 
 // 美式足球（16）
@@ -133,8 +136,10 @@ export const americasoccer = {
   [EGameResult.Q2G]: {title: '2'},
   [EGameResult.Q3G]: {title: '3'},
   [EGameResult.Q4G]: {title: '4'},
-  [EGameResult.HTG]: {title: '半场'},
   [EGameResult.OTG]: {title: '加时'},
+  [EGameResult.FHG]: {title: '上半场'},
+  [EGameResult.SHG]: {title: '下半场'},
+  [EGameResult.OT_SECOND_HALF]: {title: '下&加时'},
   [EGameResult.FG]: {title: '总分'},
 };
 
@@ -143,9 +148,18 @@ export const baseball = {
   [EGameResult.Q1G]: {title: '1'},
   [EGameResult.Q2G]: {title: '2'},
   [EGameResult.Q3G]: {title: '3'},
-  [EGameResult.OTG]: {title: '加时'},
-  [EGameResult.PSO]: {title: '点球大战'},
-  [EGameResult.FG]: {title: '总分'},
+  [EGameResult.Q4G]: {title: '4'},
+  [EGameResult.Q5G]: {title: '5'},
+  [EGameResult.Q6G]: {title: '6'},
+  [EGameResult.Q7G]: {title: '7'},
+  [EGameResult.Q8G]: {title: '8'},
+  [EGameResult.Q9G]: {title: '9'},
+  [EGameResult.EI]: {title: 'EI'},
+  [EGameResult.FIVE_COUNT]: {title: '前五局'},
+  [EGameResult.FG]: {title: '全场'},
+  [EGameResult.ADA]: {title: '安打'},
+  // [EGameResult.OTG]: {title: '加时'},
+  // [EGameResult.PSO]: {title: '点球大战'},
 };
 
 // 羽毛球（19）
@@ -154,7 +168,7 @@ export const badminton = {
   [EGameResult.Q2G]: {title: '2'},
   [EGameResult.Q3G]: {title: '3'},
   [EGameResult.FG]: {title: '总分'},
-  [EGameResult.GSCORE]: {title: '局比分'},
+  [EGameResult.GSCORE]: {title: '局分'},
 };
 
 // 乒乓球（23)
@@ -167,7 +181,7 @@ export const pingpong = {
   [EGameResult.Q6G]: {title: '6'},
   [EGameResult.Q7G]: {title: '7'},
   [EGameResult.FG]: {title: '总分'},
-  [EGameResult.GSCORE]: {title: '局比分'},
+  [EGameResult.GSCORE]: {title: '局分'},
 };
 
 // 沙滩排球（26）
@@ -178,7 +192,7 @@ export const beachVolleyball = {
   [EGameResult.Q4G]: {title: '4'},
   [EGameResult.Q5G]: {title: '5'},
   [EGameResult.FG]: {title: '总分'},
-  [EGameResult.GSCORE]: {title: '局比分'},
+  [EGameResult.GSCORE]: {title: '局分'},
 };
 
 // 曲棍球（28）
@@ -195,7 +209,7 @@ export const hockey = {
 
 // 其他游戏
 export const otherGames = {
-  [EGameResult.FG]: {title: '全场比分'},
+  [EGameResult.FG]: {title: '比分'},
 };
 
 export function YellowCardFirstHalf() {

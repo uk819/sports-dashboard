@@ -11,8 +11,12 @@ import styles from './style.scss';
 import OptionBar from './components/OptionBar';
 import ResultTable from './components/ResultTable';
 
-
 export const GamesResult = React.memo(() => {
+  React.useEffect(()=>{
+    window.onbeforeunload = ()=>{
+      document.cookie = 'hasGameResult=';
+    };
+  }, []);
   return (
     <div className={styles.wrapper}>
       <div className="container">

@@ -5,45 +5,588 @@
   flex: 1;
   flex-direction: column;
   overflow: auto;
-  
+
   .body-row {
     display: flex;
     align-items: stretch;
     border: none;
-    
+
     border-radius: 4px;
-    
+
     &:not(.opened) {
       margin-bottom: 10px;
-      @include useTheme{
-        background: getVar('dpCar');
-      }      
+      @include useTheme {
+        background: getVar('dpBar');
+      }
     }
     &.opened {
-      @include useTheme{
+      @include useTheme {
         background: getVar('dpHover');
       }
+      // >span {
+      //   &:nth-of-type(4), &:nth-of-type(5), &:nth-of-type(6), &:nth-of-type(10), &:nth-of-type(11), &:nth-of-type(12), &:nth-of-type(16), &:nth-of-type(17) {
+      //     @include useTheme {
+      //       background: getVar('dpForm2');
+      //     }
+      //   }
+      // }
     }
-
-    >span {
+    &.champion {
+      > span {
+        font-family: 'PingFang SC';
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        padding: 26px 20px;
+        &.begin-time {
+          font-size: 14px;
+          font-family: DINPro;
+        }
+        &.league {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+        }
+        &.result-content {
+          display: flex;
+          justify-content: center;
+          text-align: center;
+        }
+      }
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    &.opened.sports-1 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(12),
+        &:nth-of-type(16),
+        &:nth-of-type(17) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &.opened.sports-2 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &.opened.sports-3 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(10) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-3 {
+      > span.render-array {
+        &:nth-of-type(9),
+        &:nth-of-type(10) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-18 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(9),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(12),
+        &:nth-of-type(13),
+        &:nth-of-type(16) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-18 {
+      > span.render-array {
+        &:nth-of-type(15) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-19 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(8) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-19 {
+      > span.render-array {
+        &:nth-of-type(7),
+        &:nth-of-type(8) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-23 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(9),
+        &:nth-of-type(10),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-23 {
+      > span.render-array {
+        &:nth-of-type(11),
+        &:nth-of-type(12) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-6 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(10) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-6 {
+      > span.render-array {
+        &:nth-of-type(9),
+        &:nth-of-type(10) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-12 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-12 {
+      > span.render-array {
+        &:nth-of-type(9) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-11 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &.opened.sports-5 {
+      > span {
+        &:nth-of-type(4) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-5 {
+      > span.render-array {
+        &:nth-of-type(5) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-16 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    &:not(.opened).sports-16 {
+      > span.render-array {
+        &:nth-of-type(12) {
+          @include useTheme {
+            color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+    &.opened.sports-9 {
+      > span {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7) {
+          @include useTheme {
+            background: getVar('dpForm2') !important;
+          }
+        }
+      }
+    }
+    > span {
       display: flex;
       align-items: center;
+      font-family: 'PingFang SC';
       @include useTheme {
-        color: getVar('dpStrong');
-        border-right: 0.5px solid getVar('dp_divide');
+        color: getVar('dp_tip_notice_modal_title_color');
       }
       &.wide-element {
-        padding-left: 15px;
-        padding-right: 15px;
-        &:first-of-type {
-          width: 130px;
+        box-sizing: border-box;
+        padding-inline: 15px;
+        @include useTheme {
+          border-right: 0.5px solid getVar('dp_divide');
         }
-        &:not(:first-of-type) {
-          width: 200px;
+        &:first-of-type {
+          width: 190px;
+        }
+        &:nth-of-type(2) {
+          width: 314px;
+        }
+        &:nth-of-type(3) {
+          width: 357px;
+        }
+      }
+      &.render-array {
+        @include useTheme {
+          background: transparent;
         }
       }
       &:not(.wide-element) {
         flex: 1;
+      }
+    }
+    &.sports-1 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(12),
+        &:nth-of-type(16),
+        &:nth-of-type(17) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(13),
+        &:nth-of-type(14),
+        &:nth-of-type(16),
+        &:nth-of-type(17) {
+          @include useTheme {
+            color: getVar('dpNormal');
+          }
+        }
+        &:nth-of-type(6),
+        &:nth-of-type(9),
+        &:nth-of-type(12),
+        &:nth-of-type(15) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+      > span {
+        &:nth-of-type(6),
+        &:nth-of-type(9),
+        &:nth-of-type(12),
+        &:nth-of-type(15) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-2 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(8),
+        &:nth-of-type(11) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-3 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(10) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(8),
+        &:nth-of-type(9) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-18 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(9),
+        &:nth-of-type(10),
+        &:nth-of-type(11),
+        &:nth-of-type(12),
+        &:nth-of-type(13),
+        &:nth-of-type(16) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(13),
+        &:nth-of-type(15) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-19 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(8) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(6),
+        &:nth-of-type(7) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-23 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(9),
+        &:nth-of-type(10),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(10),
+        &:nth-of-type(11) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-6 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(10) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(8),
+        &:nth-of-type(9) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-12 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(8) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-11 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(6) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-5 {
+      > span.render-array {
+        &:nth-of-type(4) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(4) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-16 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7),
+        &:nth-of-type(8),
+        &:nth-of-type(12) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(8),
+        &:nth-of-type(11) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
+      }
+    }
+    &.sports-9 {
+      > span.render-array {
+        &:nth-of-type(4),
+        &:nth-of-type(5),
+        &:nth-of-type(6),
+        &:nth-of-type(7) {
+          @include useTheme {
+            background: getVar('dp_Card');
+          }
+        }
+        &:nth-of-type(7) {
+          @include useTheme {
+            border-right: 0.5px solid getVar('dp_divide');
+          }
+        }
       }
     }
   }
@@ -58,13 +601,21 @@
     }
 
     .body-row {
-      >span {
+      @include useTheme {
+        background: getVar('dpCar');
+      }
+      > span {
         height: 34px;
         font-size: 14px;
         line-height: 14px;
 
         &.contain-filtering {
+          display: flex;
+          align-items: center;
           gap: 4px;
+          .date-order {
+            cursor: pointer;
+          }
         }
 
         &:not(.wide-element) {
@@ -80,6 +631,7 @@
     flex: 1;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: auto;
     &::-webkit-scrollbar {
       display: none;
     }
@@ -89,8 +641,17 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      .ant-empty-image {
+        width: 140px;
+        height: 140px;
+        margin: 0;
+        img {
+          width: 100%;
+          height: auto;
+        }
+      }
     }
-    
+
     .collapse-opened {
       margin-bottom: 10px;
     }
@@ -98,21 +659,31 @@
     .collapse-header {
       border: none;
       padding: 0;
-
+      position: sticky;
+      top: 0;
+      left: 0;
       .body-row {
         cursor: pointer;
         width: 100%;
         // min-height: 70px;
-      
-        >span {
+        > span {
           font-size: 12px;
 
           &.wide-element {
+            @include useTheme {
+              color: getVar('dp_tip_notice_modal_title_color');
+            }
             &.contain-view-icon {
               display: flex;
               justify-content: flex-start;
               align-items: center;
               gap: 10px;
+              @include useTheme {
+                font-family: DINPro;
+                font-size: 14px;
+                font-weight: 400;
+                line-height: 13px;
+              }
             }
 
             &.league-title {
@@ -120,13 +691,13 @@
               justify-content: start;
               align-items: center;
               gap: 10px;
-    
+
               img {
                 width: 18px;
                 height: 18px;
               }
 
-              >span {
+              > span {
                 line-break: auto;
                 line-height: 1.8;
               }
@@ -152,7 +723,7 @@
               }
             }
           }
- 
+
           &.render-array {
             display: flex;
             flex-direction: column;
@@ -160,9 +731,10 @@
             line-height: 2;
 
             &:not(.wide-element) {
-              align-items: center;          
+              align-items: center;
             }
-            &.full-time-goal {
+            &.full-time-goal,
+            &.final-goal {
               @include useTheme {
                 color: getVar('dpTheme');
               }

@@ -11,6 +11,7 @@ interface propTypes {
   viewDetail: React.Key | null,
   toggleIcon: (key: React.Key) => void,
   tags: Record<EGameResult, IconProps>,
+  sportId: number,
 };
 
 interface FilteredResult {
@@ -18,7 +19,7 @@ interface FilteredResult {
   val: Array<number | string>,
 };
 
-export default React.memo(({data, viewDetail, toggleIcon, tags}: propTypes) => {
+export default React.memo(({data, viewDetail, toggleIcon, tags, sportId}: propTypes) => {
   const filteredResultArr: FilteredResult[] = [];
 
   const filterFunc = (tags: Record<EGameResult, IconProps>, data: TGameResultStatistic, arr: FilteredResult[]) => {
@@ -34,10 +35,10 @@ export default React.memo(({data, viewDetail, toggleIcon, tags}: propTypes) => {
 
   const Header = ({resData}: {resData: FilteredResult[]}) => {
     return (
-      <div className={`body-row ${viewDetail === data.mid ? 'opened' : ''}`} onClick={() => toggleIcon(data.mid)}>
+      <div className={`body-row ${viewDetail === data.mid? 'opened' : ''} sports-${sportId}`} onClick={() => toggleIcon(data.mid)}>
         <span className="wide-element contain-view-icon">
           <span>
-            {viewDetail === data.mid ? <IconGameDetailView /> : <IconGameBriefView />}
+            {viewDetail === data.mid? <IconGameDetailView /> : <IconGameBriefView />}
           </span>
           <span>{data.bt}</span>
         </span>
@@ -48,7 +49,7 @@ export default React.memo(({data, viewDetail, toggleIcon, tags}: propTypes) => {
         <span className="wide-element match-title render-array">
           {data.mn.map((team, idx) => (
             <span key={idx}>
-              {!!team.logo && <img src={team.logo} alt="Team Logo" />}
+              {/* {!!team.logo && <img src={team.logo} alt="Team Logo" />} */}
               {team.title}
             </span>
           ))}
@@ -61,15 +62,14 @@ export default React.memo(({data, viewDetail, toggleIcon, tags}: propTypes) => {
       </div>
     );
   };
-
   return (
     <DpCollapse
-      className={viewDetail === data.mid ? 'collapse-opened' : ''}
+      className={viewDetail === data.mid? 'collapse-opened' : ''}
       key={data.mid}
       allOpen={viewDetail === data.mid}
       header={<Header resData={filteredResultArr} />}
     >
-      {viewDetail === data.mid && <DetailData mTeam={_.map(data.mn, (team) => team.title)} />}
+      {viewDetail === data.mid && <DetailData mTeam={_.map(data.mn, (team) => team.title)} sevenData={data.details} scores={JSON.parse(data.scores)}/>}
     </DpCollapse>
   );
 });

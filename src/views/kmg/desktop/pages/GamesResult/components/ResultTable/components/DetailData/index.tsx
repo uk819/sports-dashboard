@@ -29,15 +29,14 @@ const VideoPlayer = ({video, viewOptions, handlePlay}: {video: TGameResultVideoI
     </div>
   );
 };
-
-
-export default React.memo(({mTeam}: {mTeam: Array<string>}) => {
+export default React.memo(({mTeam, scores, sevenData}: { mTeam: Array<string>, scores: string| any, sevenData: any}) => {
   const {dispatch, ACTIONS} = usePublicState();
   const detailData = useSelector((state: TStore) => state.sport.display.gameResultDetail);
   const {sportId} = useSelector((state: TStore) => state.sport.userSettings.gameResultPageInfo);
   const {loading, toast} = useSelector((state: TStore) => state.base);
   const [activeOption, setActiveOption] = useState<number>(-1);
   const [matchedDetails, setMatchedDetails] = useState<TGameResultFilteredDetailItem[]>([]);
+  const [matchedDetailsMap, setMatchedDetailsMap] = useState<any>({});
   const options = viewOptions(sportId);
   const swiperRef = useRef<SwiperRef>(null);
   const videoRef = useRef(null);
@@ -62,15 +61,16 @@ export default React.memo(({mTeam}: {mTeam: Array<string>}) => {
   }, []);
 
   useEffect(() => {
-    const filteredDetails = filterGameResult(_.filter(detailData.details, ((detail) => detail.ctid === activeOption || activeOption === -1)), mTeam, sportId);
-    setMatchedDetails(filteredDetails);
+    const {results, resultsMap} = filterGameResult(_.filter(detailData.details, ((detail) => detail.ctid === activeOption || activeOption === -1)), mTeam, sportId);
+    setMatchedDetails(results);
+    setMatchedDetailsMap(resultsMap);
   }, [activeOption, detailData]);
 
   const handleSwip = (flag: number) => {
     const index = swiperRef.current.swiper.activeIndex;
     flag > 0 ? swiperRef.current.swiper.slideTo(index + 1) : swiperRef.current.swiper.slideTo(index - 1);
   };
-
+  console.log(_.isEmpty(scores), 11111, scores);
   return (
     <div className={styles.wrapper}>
       <Modal
@@ -84,8 +84,7 @@ export default React.memo(({mTeam}: {mTeam: Array<string>}) => {
       >
         <video style={{width: '-webkit-fill-available'}} src={videoURL} autoPlay ref={videoRef} />
       </Modal>
-
-      {!!options.length && <div className="view-options">
+      {!!options.length && sportId === 1 && <div className="view-options">
         {options.map((option) => (
           <span
             key={option.value}
@@ -95,7 +94,78 @@ export default React.memo(({mTeam}: {mTeam: Array<string>}) => {
           </span>
         ))}
       </div>}
-
+      {sportId === 5 && <>
+        {_.isEmpty(scores) ? <div className='snooker-options'>
+          <p className='title'>单局比分</p>
+          <div className='content'>
+            <div className="content-header">
+              {
+                [1, 2, 3, 4, 5, 6, 7].map((item: any, idx: number) => {
+                  return <div className='header-item' key={idx}>
+                    <p>{idx + 1}</p>
+                  </div>;
+                })
+              }
+            </div>
+            <div className="content-detail">
+              <div className='detail-item'>
+                <p>{sevenData['first-round-goal'][0]}</p>
+                <p>{sevenData['first-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['second-round-goal'][0]}</p>
+                <p>{sevenData['second-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['third-round-goal'][0]}</p>
+                <p>{sevenData['third-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['fourth-round-goal'][0]}</p>
+                <p>{sevenData['fourth-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['fifth-round-goal'][0]}</p>
+                <p>{sevenData['fifth-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['sixth-round-goal'][0]}</p>
+                <p>{sevenData['sixth-round-goal'][1]}</p>
+              </div>
+              <div className='detail-item'>
+                <p>{sevenData['seventh-round-goal'][0]}</p>
+                <p>{sevenData['seventh-round-goal'][1]}</p>
+              </div>
+            </div>
+          </div>
+        </div> :
+        <div className='snooker-options'>
+          <p className='title'>单局比分</p>
+          <div className='content'>
+            <div className="content-header">
+              {
+                Object.keys(scores).map((item: any, idx: number) => {
+                  return <div className='header-item' key={idx}>
+                    <p>{idx + 1}</p>
+                  </div>;
+                })
+              }
+            </div>
+            <div className="content-detail">
+              {
+                Object.keys(scores).sort((a, b) => Number(a) - Number(b)).map((item: any) => {
+                  return (
+                    <div className='detail-item' key={item}>
+                      <p>{scores[item].split('-')[0]}</p>
+                      <p>{scores[item].split('-')[1]}</p>
+                    </div>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>}
+      </>}
       {/* 视频显示 */}
       {detailData.videos && (
         <div className='view-videos'>
@@ -125,17 +195,23 @@ export default React.memo(({mTeam}: {mTeam: Array<string>}) => {
       ) : (
         // 具体信息显示
         <div className="view-details">
-          {matchedDetails.map((detail, idx) => {
+          {Object.keys(matchedDetailsMap).map((key, idx) => {
             return (
               <div key={idx} className="event">
-                <div>{detail.kc}</div>
-                <div>
-                  <span>
-                    {detail.hoa}
-                    {' '}
-                    <span className='has-value'>{detail.h}</span>
-                  </span>
-                  <span className={classnames({win: detail.r === BET_RESULT_TYPE_MAP[4] || detail.r === BET_RESULT_TYPE_MAP[5]})}>{detail.r}</span>
+                <div className='type-name'>{key}</div>
+                <div className='type-value'>
+                  {
+                    matchedDetailsMap[key].map((item: any, index: number) => {
+                      return <p key={item.h + index} className={(matchedDetailsMap[key].length === (index + 1) && (index + 1) % 2 === 1) ? '' : ''}>
+                        <span>
+                          {item.hoa}
+                          <span className='has-value'>{item.h}</span>
+                        </span>
+                        <span className={classnames({win: item.r === BET_RESULT_TYPE_MAP[4] || item.r === BET_RESULT_TYPE_MAP[5]})}>{item.r}</span>
+                      </p>;
+                    })
+                  }
+                  {matchedDetailsMap[key].length % 2 ===1 &&<p></p>}
                 </div>
               </div>
             );

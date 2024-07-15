@@ -1,7 +1,14 @@
+import {TGameResultCounts, TGameResultStatistic} from '@core/reducers/_reduxStore';
+
 export interface DatePickerProps {
   handelGetTime?: (time: string) => void;
   handleSportId?: (sportId: number) => void;
-  sportId?: number
+  sportId?: number;
+  currentTime?: string;
+  opts?: Array<{label: string; value: number}>;
+  setShowFilter?: (val: boolean) => void;
+  gamesResult?: TGameResultStatistic[];
+  counts?: TGameResultCounts;
 }
 
 export interface WeekArr {
@@ -16,14 +23,15 @@ export interface GamesType {
 
 export interface LeagueItemPrps {
   sportId: number;
-  initActiveIndex: number;
-  setInitActiveIndex: (num: number)=> void;
   itemData?: any;
   index?: number;
   data?: any;
-  actIndex?:number;
   inView?: boolean;
-  toggleCollapseLeague?: (num: number)=>void;
+  toggleCollapseLeague?: (num: number) => void;
   isCollapse?: Array<string>;
-  isNetGames?: boolean;
+}
+
+export interface MatchTypeProps {
+  matchType: number;
+  setMatchType: (val: number) => void;
 }

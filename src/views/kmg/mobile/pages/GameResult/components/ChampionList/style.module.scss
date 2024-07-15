@@ -1,0 +1,138 @@
+@import '~@style/mixins/index.scss';
+
+.wrapper {
+  height: 100%;
+  .single_wrapper {
+    border-radius: 8px;
+
+    .item {
+      margin: 8px 6px;
+      > div {
+        @include useTheme {
+          background-color: getVar('dpH5Card');
+        }
+      }
+      .match_wrapper {
+        display: flex;
+        align-items: center;
+        height: 28px;
+        box-sizing: border-box;
+        border-radius: 6px 6px 0 0;
+        position: sticky;
+        top: -1px;
+        z-index: 8;
+        @include useTheme {
+          border-bottom: 0.5px solid getVar('dpDivide');
+        }
+        .match_name {
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+          position: relative;
+          height: 14px;
+          &::before {
+            content: '';
+            width: 2px;
+            height: 14px;
+            position: absolute;
+            left: 0;
+            top: 0px;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center center;
+            background-image: url('~@this/assets/images/common/title-line.png');
+          }
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          font-size: 12px;
+          line-height: 12px;
+          font-style: normal;
+          font-weight: 500;
+        }
+        .actions {
+          position: absolute;
+          right: 0;
+          height: 100%;
+          top: 0;
+          display: flex;
+          align-items: center;
+          padding-right: 12px;
+          .icon {
+            transition: 0.2s;
+            transform: rotate(-90deg);
+            &.icon_right {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+      }
+      .item_content {
+        padding: 0 10px;
+        border-radius: 0 0 6px 6px;
+        .item_bet {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          font-size: 12px;
+          line-height: 12px;
+          font-family: PingFang SC;
+          @include useTheme {
+            border-bottom: 0.5px solid getVar('dpDivide');
+          }
+          padding: 12px 0px;
+          &:last-child {
+            border-bottom: none !important;
+          }
+          .league {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            @include useTheme {
+              color: getVar('dpH5Strong');
+            }
+            img {
+              width: 14px;
+              height: 14px;
+            }
+          }
+          .detail {
+            background: #3586ff0d;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-weight: 500;
+            padding: 8px 18px;
+            border-radius: 4px;
+          }
+          .time {
+            padding-left: 18px;
+            color: #636b78;
+          }
+        }
+      }
+      &.is_closed {
+        .item_content {
+          display: none !important;
+        }
+        .match_wrapper {
+          border-bottom: none !important;
+          border-radius: 6px !important;
+        }
+      }
+    }
+  }
+  .no_more {
+    padding-bottom: 10px;
+    text-align: center;
+  }
+  .empty_wrapper {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

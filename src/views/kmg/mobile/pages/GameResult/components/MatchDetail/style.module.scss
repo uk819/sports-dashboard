@@ -1,0 +1,450 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+.wrapper {
+  width: 100%;
+  position: relative;
+  @include useTheme {
+    background-color: getVar('dpBackground');
+  }
+  .detailHead {
+    height: 206px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.football {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_football.png')center -44px/cover;
+    }
+    &.basket {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_bascket.png')center -44px/cover;
+    }
+    &.volleyball {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_volleyball.png')center -44px/cover;
+    }
+    &.baseball {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_baseball.png')center -44px/cover;
+    }
+    &.pingpong {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_pingpong.png')center -44px/cover;
+    }
+    &.badminton {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/badminton.png')center -44px/cover;
+    }
+    &.rugby {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_rugby.png')center -44px/cover;
+    }
+    &.handball {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_handball.png')center -44px/cover;
+    }
+    &.iceHockey {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_iceHockey.png')center -44px/cover;
+    }
+    &.american {
+      background:linear-gradient(180deg,rgba(0,0,0,.2)23.1%,rgba(0,0,0,0)55.77%),url('./i/bg_american.png')center -44px/cover;
+    }
+    .mainContent {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      .statusPan {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        color: white;
+        font-family: PingFang SC;
+        .date {
+          font-size: 12px;
+          line-height: 12px;
+        }
+        .score {
+          font-weight: 500;
+          font-size: 32px;
+          line-height: 32px;
+          font-family: DINPro;
+        }
+        .status {
+          font-size: 12px;
+          line-height: 12px;
+        }
+      }
+      .team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        .name {
+          font-size: 12px;
+          line-height: 12px;
+          font-family: PingFang SC;
+          color: white;
+          max-width: 90px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          text-wrap: nowrap;
+        }
+        .logo {
+          width: 40px;
+          height: 40px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      .goToBack {
+        width: 20px;
+        height: 20px;
+        background-image: url('./i/goBack.png');
+        background-position: center;
+        background-size: cover;
+      }
+      .league {
+        font-size: 18px;
+        line-height: 18px;
+        font-family: PingFang SC;
+        font-weight: 500;
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        .down {
+          width: 12px;
+          height: 12px;
+          background-image: url('./i/down.png');
+          background-position: center;
+          background-size: cover;
+        }
+      }
+      .refresh {
+        width: 20px;
+        height: 20px;
+        background-image: url('./i/refresh.png');
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    .scorePan {
+      display: flex;
+      padding: 8px 12px;
+      box-sizing: border-box;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      gap: 9px;
+      font-size: 10px;
+      line-height: 12px;
+      font-family: PingFang SC;
+      color: white;
+      align-items: center;
+      p {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        div {
+          width: 16px;
+          height: 16px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+  .tab {
+    height: 40px;
+    padding-left: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include useTheme {
+      background-color: getVar('dpTopBackground');
+    }
+    .control {
+      right: 14px;
+      top: 14px;
+      position: absolute;
+    }
+    .active {
+      font-size: 18px;
+      font-family: 'PingFang SC';
+      font-weight: 500;
+      @include useTheme {
+        color: getVar('dpH5Strong');
+      }
+      padding: 11px;
+      &::after {
+        content: '';
+        background-color: #3586FF;
+        width: 12px;
+        height: 2px;
+        position: absolute;
+        bottom: -9px;
+        left: 50%;
+        position: relative;
+        display: block;
+        transform: translateX(-50%);
+        border-radius: 38px;
+        -webkit-border-radius: 38px;
+        -moz-border-radius: 38px;
+        -ms-border-radius: 38px;
+        -o-border-radius: 38px;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        -o-transform: translateX(-50%);
+}
+    }
+    .nonActive {
+      font-size: 16px;
+      font-family: 'PingFang SC';
+      line-height: 18px;
+      @include useTheme {
+        color: getVar('dpH5Normal');
+      }
+      padding: 11px;
+    }
+  }
+  .result {
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 266px);
+    overflow-y: scroll;
+    margin-top: 8px;
+    padding-top: 0;
+  }
+  .favorite {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 12px;
+    .item {
+      padding: 8px 10px 12px 10px;
+
+      @include useTheme {
+        background-color: getVar('dpH5Card');
+        box-shadow: 0px 2px 4px 0px #0000000A;
+      }
+      border-radius: 6px;
+      box-sizing: border-box;
+      width: calc(100% - 12px);
+      margin: 0 auto;
+      .date {
+        font-size: 12px;
+        line-height: 12px;
+        position: relative;
+        @include useTheme {
+          color: getVar('dpH5Normal');
+        }
+        &::after {
+          content: '';
+          width: 2px;
+          height: 14px;
+          background-color: #2388FF;
+          position: absolute;
+          left: -10px;
+          border-top-right-radius: 4px;
+          border-bottom-right-radius: 4px;
+          top: 0;
+          display: block;
+        }
+      }
+      .content {
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .status {
+          display: flex;
+          gap: 2px;
+          .block {
+            padding: 13px 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            border-radius: 4px;
+            box-shadow: 0px 1px 2px 0px #C6C8CF40;
+
+            @include useTheme {
+              background-color: getVar('dpH5Button');
+            }
+            .prop {
+              font-family: 'DINPro';
+              font-weight: 400;
+              font-size: 11px;
+              line-height: 11px;
+              @include useTheme {
+                color: getVar('dpH5Ancillary');
+              }
+            }
+            .val {
+              font-family: 'DINPro';
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 12px;
+              text-align: center;
+              @include useTheme {
+                color: getVar('dpH5Strong');
+              }
+            }
+          }
+        }
+        .teams {
+          display: flex;
+          flex-direction: column;
+          gap: 17px;
+          .team {
+            display: flex;
+            gap: 4px;
+            .name {
+              font-size: 12px;
+              line-height: 12px;
+              max-width: 182px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-wrap: nowrap;
+              @include useTheme {
+                color: getVar('dpH5Strong');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .gotoTop {
+    right: 12px;
+    bottom: 52px;
+    position: absolute;
+  }
+}
+.resultItem {
+  width: 100%;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  @include useTheme {
+    background-color: getVar('dpBetCard1');
+  }
+  order: 2;
+  &.pins {
+    order: 1;
+  }
+  .title {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    text-align: center;
+    padding: 8px 0;
+    position: relative;
+    @include useTheme {
+      color: getVar('dpH5Strong');
+    }
+    &::after {
+      content: '';
+      width: 2px;
+      height: 14px;
+      background-color: #2388FF;
+      position: absolute;
+      left: -2px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
+      display: block;
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+    }
+    .control {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+  }
+  .content {
+    border-top: 0.5px solid var(---H5_divide, #E9ECF3);
+    padding: 12px 10px;
+    gap: 7px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 6px;
+    @include useTheme {
+      border-top: 1px solid getVar('dpDivide');
+    }
+    &.col1 {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    &.col2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    &.col3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .item {
+      background-color: white;
+      @include useTheme {
+        background-color: getVar('dpButton');
+        box-shadow: getVar('dpH5BoxShadow');
+      }
+      border-radius: 4px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      -ms-border-radius: 4px;
+      -o-border-radius: 4px;
+      padding: 8px 0;
+      p {
+        text-align: center;
+        &:first-child {
+          font-size: 11px;
+          line-height: 11px;
+          @include useTheme {
+            color: getVar('dpH5Ancillary');
+          }
+        }
+        &:last-child {
+          font-size: 12px;
+          line-height: 12px;
+          font-weight: 500;
+          margin-top: 4px;
+        }
+      }
+      .lose {
+        color: #24C23D;
+      }
+      .win {
+        color: #ED4949;
+      }
+      .widthraw {
+        color: #3586FF;
+      }
+    }
+  }
+}

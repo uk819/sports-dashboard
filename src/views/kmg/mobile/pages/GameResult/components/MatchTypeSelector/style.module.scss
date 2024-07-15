@@ -1,0 +1,90 @@
+@import '~@style/mixins/index.scss';
+
+.wrapper {
+  // width: 100%;
+  height: 44px;
+  position: relative;
+  text-align: center;
+  background: transparent;
+  .go_back {
+    position: absolute;
+    left: 14px;
+    top: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+    padding-left: 44px;
+
+    .text_wrapper {
+      position: relative;
+      font-family: PingFang SC;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 14px;
+      text-align: center;
+      @include useTheme {
+        color: getVar('dpH5Normal');
+      }
+      &.active {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 18px;
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+        &::after {
+          position: absolute;
+          content: '';
+          width: 24px;
+          height: 2px;
+          top: 22px;
+          left: 24px;
+          border-radius: 1px;
+          @include useTheme {
+            background: getVar('dpTheme');
+          }
+        }
+      }
+    }
+  }
+}
+
+.date_list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 22px;
+  width: 355px;
+  height: 28px;
+  padding-left: 13px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .option_item {
+    font-family: DINPro;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    white-space: nowrap;
+    @include useTheme {
+      color: getVar('dpH5Normal');
+    }
+    &.active {
+      font-family: PingFang SC;
+      font-weight: 500;
+      @include useTheme {
+        color: getVar('dpTheme');
+      }
+    }
+  }
+}

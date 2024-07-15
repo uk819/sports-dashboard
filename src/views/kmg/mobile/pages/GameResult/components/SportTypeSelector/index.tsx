@@ -5,43 +5,43 @@
  * @FilePath: /KMG/src/views/kmg/mobile/pages/SportGame/components/SportTypeSelector/index.tsx
  * @Description:
  */
-import {useCallback, useState} from 'react';
+import {useCallback, useState, useEffect} from 'react';
 import classnames from 'classnames';
-import {DatePickerProps} from './../../type';
-import useGamesResultInit from '@core/hooks/sports/useGamesResultInit';
-import dayjs from 'dayjs';
-import {GamesType} from './../../type';
-import styles from './style.scss';
+import {GamesType, DatePickerProps} from './../../type';
+import style from './style.module.scss';
+import {TGameResultCounts} from '@core/reducers/_reduxStore';
 
-const gameResultPageInfo = {
-  sportId: 1,
-  beginTime: dayjs().format('YYYY/MM/DD'),
-  endTime: dayjs().format('YYYY/MM/DD'),
-  pageNum: 1,
-  pageSize: 1000,
-};
-
-export default function({handleSportId, handelGetTime}:DatePickerProps) {
-  const {gameResultOpts}= useGamesResultInit(gameResultPageInfo, 'saiguo');
+export default function({sportId, handleSportId, opts, counts}: DatePickerProps) {
   const [index, setIndex] = useState(0);
-  const onClick = useCallback((idx:number, item: GamesType) => {
+  const onClick = useCallback((idx: number, item: GamesType) => {
     handleSportId(item.value);
-    handelGetTime(dayjs().format('YYYY/MM/DD'));
     setIndex(idx);
   }, []);
+
+  useEffect(() => {
+    const inSportTypeRange = opts.findIndex((item) => item.value === sportId);
+    if (inSportTypeRange > -1) {
+      setIndex(inSportTypeRange);
+    } else {
+      setIndex(-1);
+    }
+  }, [sportId, opts]);
+
   return (
-    <div className={styles.wrapper}>
-      {gameResultOpts.map((item, idx) => (
-        item &&
-        <div
-          className={'sport-type-item'}
-          onClick={() => onClick(idx, item)}
-          key={item.value}>
-          <div className={classnames('sport-logo', `sid-${item?.value}`, {active: idx === index})}>
-          </div>
-          <p className={`${idx === index ? 'active' : ''}`}>{item.label}</p>
-        </div>
-      ))}
+    <div className={style.wrapper}>
+      {opts.map(
+          (item, idx) =>
+            item && (
+              <div
+                className={classnames(style.type_item, {[style.active]: idx === index})}
+                onClick={() => onClick(idx, item)}
+                key={item.value}>
+                <p className={style.count}>{counts[item.value as keyof TGameResultCounts] || 0}</p>
+                <div className={classnames(style.sport_logo, style[`sid_${item?.value}`])}></div>
+                <p className={style.label}>{item.label}</p>
+              </div>
+            ),
+      )}
     </div>
   );
 }

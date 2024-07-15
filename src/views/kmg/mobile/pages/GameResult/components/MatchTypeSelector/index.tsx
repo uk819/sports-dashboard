@@ -7,48 +7,48 @@
  */
 
 import DpIcon from '@views/kmg/mobile/components/Icon';
-import css from './style.scss';
 import classnames from 'classnames';
 import {useCallback, useEffect, useMemo, useState} from 'react';
 import dayjs from 'dayjs';
-import useEventEmitter from '@core/hooks/useEventEmitter';
-import {TMitt} from '@core/constants/enum/mitt';
-import {DatePickerProps, WeekArr} from './../../type';
-export default React.memo((props:DatePickerProps) => {
-  const [selectIndex] = useState(0);
-  const {emit: showDateEmit} = useEventEmitter<TMitt['showDatePick']>({mittName: 'showDatePick'});
+import {DatePickerProps, MatchTypeProps, WeekArr} from './../../type.d';
+import style from './style.module.scss';
 
-  useEffect(() => {
-    showDateEmit({display: selectIndex === 2});
-  }, [selectIndex]);
-
+export default React.memo(({matchType, setMatchType}: MatchTypeProps) => {
+  const displayTypes = ['体育赛果', '电子竞技', '冠军赛果'];
   const onBack = () => {
     window.history.go(-1);
   };
 
   return (
-    <>
-      <div className={css.wrapper}>
-        <div className="go-back" onClick={onBack}>
-          <DpIcon type="arrow" />
-        </div>
-        <div className='navbar'>
-          <div className={classnames('text-wrapper')} >赛果</div>
-        </div>
+    <div className={style.wrapper}>
+      <div className={style.go_back} onClick={onBack}>
+        <DpIcon type='arrow' />
       </div>
-    </>
+      <div className={style.navbar}>
+        {displayTypes.map((val, key) => (
+          <div
+            key={key}
+            className={classnames(style.text_wrapper, {[style.active]: matchType === key})}
+            onClick={() => setMatchType(key)}>
+            {val}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 });
 
 export const DatePicker = React.memo((props: DatePickerProps) => {
   const [index, setIndex] = useState(0);
-  const week = useMemo(()=> {
-    return _.times(8).splice(1).map((i) => ({
-      name: dayjs().subtract(i, 'day').format('MM/DD'),
-      time: dayjs().subtract(i, 'day').format('YYYY/MM/DD'),
-    }));
+  const week = useMemo(() => {
+    return _.times(8)
+        .splice(1)
+        .map((i) => ({
+          name: dayjs().subtract(i, 'day').format('MM-DD'),
+          time: dayjs().subtract(i, 'day').format('YYYY/MM/DD'),
+        }));
   }, []);
-  const dates:WeekArr[] = useMemo(()=> {
+  const dates: WeekArr[] = useMemo(() => {
     return [{name: '今日', time: dayjs().format('YYYY/MM/DD')}, ...week];
   }, []);
   const handleClick = useCallback((idx: number) => {
@@ -56,15 +56,23 @@ export const DatePicker = React.memo((props: DatePickerProps) => {
     setIndex(idx);
   }, []);
   useEffect(() => {
-    setIndex(0);
-  }, [props.sportId]);
+    const inDateRange = dates.findIndex((date) => date.time === props.currentTime);
+    if (inDateRange > -1) {
+      setIndex(inDateRange);
+    } else {
+      setIndex(-1);
+    }
+  }, [props.currentTime]);
   return (
-    <div className="date-list">
-      {
-        dates.map((item, idx) => (
-          <div className={classnames('option-item', {active: idx === index})} onClick={() => handleClick(idx)} key={item.name}>{item.name}</div>
-        ))
-      }
+    <div className={style.date_list}>
+      {dates.map((item, idx) => (
+        <div
+          className={classnames(style.option_item, {[style.active]: idx === index})}
+          onClick={() => handleClick(idx)}
+          key={item.name}>
+          {item.name}
+        </div>
+      ))}
     </div>
   );
 });

@@ -1,0 +1,176 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper1) {
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  position: fixed;
+  animation: fadeInout 0.3s ease-in;
+  overflow: hidden;
+  height: fit-content;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  @include useTheme {
+      background-color: getVar(dpTopBackground);
+  }
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    .goToBack {
+      width: 20px;
+      height: 20px;
+      background-position: center;
+      background-size: cover;
+      @include useTheme {
+        background-image: getVar('dpH5GotoBack');
+      }
+    }
+    .league {
+      font-size: 18px;
+      line-height: 18px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      @include useTheme {
+        color: getVar('dpH5Strong');
+      }
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      .down {
+        width: 12px;
+        height: 12px;
+        background-image: url('../i/down1.png');
+        transform: rotate(180deg);
+        background-position: center;
+        background-size: cover;
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+}
+    }
+    .refresh {
+      width: 20px;
+      height: 20px;
+      background-image: url('../i/refresh.png');
+      background-position: center;
+      background-size: cover;
+    }
+  }
+  .league-open {
+    box-sizing: border-box;
+    padding: 12px;
+    padding-top: 56px;
+    max-height: calc(100% - 45.75px);
+    overflow-y: scroll;
+    .ant-image {
+      img {
+        width: 38px;
+        height: 38px;
+        object-fit: contain;
+      }
+    }
+    >li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 30px;
+        border-radius: 8px;
+        position: relative;
+        margin-bottom: 12px;
+        margin-top: 24px;
+        &:nth-child(1) {
+            margin-top: 12px;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: -12px;
+            left: 0px;
+            @include useTheme {
+                border-top: 0.5px solid getVar(dpDivide);
+            }
+
+        }
+        &:nth-last-child(1) {
+            &::after {
+                border-top: none!important;
+            }
+        }
+        &.active {
+            @include useTheme {
+                background-color: getVar(dpActiveButton);
+            }
+        }
+        >.team {
+            >div {
+                display: flex;
+                justify-content: center;
+                width: 32px;
+                height: 32px;
+                margin: 0 auto;
+            }
+            p {
+                margin-top: 8px;
+                width: 70px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                text-align: center;
+                &:hover {
+                    white-space: normal;
+                }
+                @include useTheme {
+                    color: getVar('dpH5Strong');
+                    font-weight: 500;
+                    font-size: 14px;
+                    line-height: 14px;
+                }
+            }
+        }
+        >.score {
+            p {
+                overflow: hidden;
+                white-space: nowrap;
+                &:hover {
+                    white-space: normal;
+                }
+                @include useTheme {
+                    color: getVar(dpH5Strong);
+                }
+                &:nth-child(1) {
+                    font-size: 12px;
+                    line-height: 12px;
+                    text-align: center;
+                }
+                &:nth-child(2) {
+                    font-family: DINPro;
+                    font-weight: 700;
+                    font-size: 32px;
+                    line-height: 32px;
+                    margin-top: 4px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+  }
+  @keyframes fadeInout {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+  }
+}

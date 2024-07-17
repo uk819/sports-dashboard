@@ -1,0 +1,17 @@
+{
+  "cliLang": "zh",
+  "projectType": ["react"],
+  "srcPath": "./src/views/kmg/desktop/pages/GamesResult/components/ResultTable/components/Icons.tsx",
+  "fileExt": "js,jsx,tsx,ts",
+  "wrapCharacter": "[\u4e00-\u9fa5]",
+  "gitModel": false,
+  "wrapperFuncName": "t",
+  "excludeWrapperFuncName": "^console,indexOf,split",
+  "jsx2Trans": false,
+  "importStr": "import {t} from '@i18n/index';\n",
+  "exclude": "node_modules,dist,.git",
+  "format": "Prettier",
+  "localeDir": "./src/i18n",
+  "languages": "zh,en",
+  "sourceLanguage": "zh"
+}

@@ -1,0 +1,30 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    width: 64px;
+    height: 86px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .logo {
+        width: 64px;
+        height: 64px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    .name {
+        text-align: center;
+        font-size: 14px;
+
+        @include useTheme {
+            color: getVar('dpTutorialText');
+        }
+    }
+}

@@ -1,0 +1,427 @@
+@import "~@core/templates/desktop/styles/mixins/index.scss";
+
+:local(.match_item) {
+  display: flex;
+  box-sizing: border-box;
+  position: relative;
+  transition: background 0.5s;
+  min-height: 158px;
+  padding-left: 58px;
+  padding-right: 38px;
+  flex-wrap: wrap;
+  &.noSubPlayMethod {
+    min-height: 120px;
+  }
+  @include useTheme {
+    color: getVar("dpNormal");
+  }
+  &:hover {
+    @include useTheme {
+      background: getVar("dp_match_bg_hover");
+      // box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
+    }
+  }
+  &.active:after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: url("./i/line.png") no-repeat;
+    background-size: 1px 100%;
+    background-position: left center;
+  }
+  &.active {
+    > div:first-child {
+      @include useTheme {
+        color: getVar('dpTheme');
+      }
+    }
+  }
+  &:not(:last-child) {
+    @include useTheme {
+      border-bottom: 1px solid getVar("dpDivide");
+    }
+  }
+  .subClassify {
+    position: absolute;
+    top: 120px;
+    left: 59px;
+    right: 38px;
+    display: flex;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    @include useTheme {
+      border-top: 0.5px solid getVar("dpDivide");
+    }
+    .open-icon {
+      width: 8px;
+      height: 8px;
+      background: url('~@this/assets/images/common/arrow.png') no-repeat;
+      background-size: contain;
+      background-position: center center;
+      transition: .2s;
+      transform: rotate(90deg);
+      &.open {
+        transform: rotate(-90deg);
+      }
+    }
+    &.bottomLine {
+      @include useTheme {
+        border-bottom: 0.5px solid getVar("dpDivide");
+      }
+
+    }
+    .btn {
+      cursor: pointer;
+      display: flex;
+      padding: 0 12px;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      height: 36px;
+      margin-right: 9px;
+      position: relative;
+      font-weight: 500;
+      &.active {
+        @include useTheme {
+          color: getVar('dpTheme');
+        }
+      }
+    }
+    .arrow {
+      cursor: pointer;
+      display: flex;
+      width: 30px;
+      height: 32px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-right: 9px;
+      @include useTheme {
+        border-right: 0.5px solid getVar("dpDivide");
+      }
+      .close-all-matchs {
+        transform-origin: center center;
+        transform: rotate(-180deg);
+        transition: all 0.2s linear;
+      }
+      .open-all-matchs {
+        transform-origin: center center;
+        transform: rotate(0deg);
+        transition: all 0.2s linear;
+      }
+    }
+  }
+  .subClassifyContent {
+    flex: auto;
+    display: flex;
+    position: relative;
+    padding-top: 24px;
+    margin-top: 38px;
+    .match-title {
+      height: 24px;
+      align-items: center;
+      display: flex;
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 0;
+      padding-left: 180px;
+      box-sizing: border-box;
+      @include useTheme {
+        background: getVar('dpBar');
+      }
+    }
+    .events-tools {
+      display: flex;
+      flex: 1;
+      .game-name {
+        flex: 1;
+        text-align: center;
+        font-weight: 600;
+        white-space: nowrap; /* 不换行 */
+        overflow: hidden; /* 超出部分隐藏 */
+        text-overflow: ellipsis;
+        @include useTheme {
+          color: getVar('dpNormal');
+        }
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6) {
+          @include useTheme {
+            color: getVar('dpTheme');
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .teamName {
+      .team-name {
+        > span:first-child {
+          max-width: 145px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  .teamName {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    position: relative;
+    width: 182px;
+    align-items: flex-start;
+    text-indent: 10px;
+  }
+  .team-name {
+    margin: 0 6px;
+    display: flex;;
+    align-items: center;
+    @include useTheme {
+      color: getVar('dpStrong');
+    }
+    &:first-child {
+      margin-bottom: 20px;
+    }
+    .red-card {
+      font-style: normal;
+      width: 11px;
+      height: 14px;
+      font-size: 11px;
+      background: #E94343;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 3px;
+      border-radius: 2px;
+      text-indent: 0;
+    }
+    &:hover {
+      @include useTheme {
+        color: getVar('dpTheme');
+      }
+    }
+  }
+  .video-list {
+    width: 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  .play-default {
+    padding: 8px 8px 2px;
+    .odd-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 12px;
+      position: relative;
+      margin-bottom: 2px;
+      >div:first-child {
+        line-height: 1.2;
+        display: flex;
+        align-items: center;
+      }
+      .mw-60 {
+        max-width: 60px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: inline-block;
+      }
+      &:hover {
+        @include useTheme {
+          background: getVar('dp_odd_hover') !important;
+        }
+      }
+      &.empty {
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+    .market-item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      &.one-row {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      &.one-line {
+        display: flex;
+      }
+    }
+    .other {
+      display: flex;
+    }
+  }
+  .bd-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0px;
+  }
+
+
+  .odd-item {
+    &.disabled {
+      justify-content: center;
+      pointer-events: none;
+    }
+  }
+  .play-bd {
+    padding: 8px 0 2px;
+  }
+  .item-head {
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+  }
+  .market-item {
+    display: flex;
+    margin-bottom: 0px;
+  }
+  .label {
+    line-height: 34px;
+    @include useTheme {
+      background: getVar('dpBar');
+      color: getVar('dpNormal');
+    }
+  }
+  .odd-item {
+    flex: 1;
+    margin : 0 1px;
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 12px;
+    position: relative;
+    width: 67px;
+    @include useTheme {
+      color: getVar('dpNormal');
+      background: getVar('dpForm2');
+    }
+    span:not(.odd) {
+      line-height: 1;
+    }
+    &:hover {
+      @include useTheme {
+        background: getVar('dp_odd_hover') !important;
+      }
+    }
+    &.active:not(.disabled) {
+      @include useTheme {
+        background: getVar('dpOddActive') !important;
+        color: getVar('dp_nomal_white');
+        .text-theme {
+          color: getVar('dp_nomal_white')!important;
+        }
+        .odd {
+          color: getVar('dpBasicWhite');
+        }
+      }
+    }
+    .odd {
+      font-size: 12px;
+      @include useTheme {
+        color: getVar('dpStrong');
+      }
+    }
+    &.odd-item:not(.disabled).up.up {
+      @include useTheme {
+        background: getVar('dpUpBackground');
+      }
+      .odd {
+        @include useTheme {
+          color: getVar('dpUp');
+        }
+      }
+      &:after {
+        content: '';
+        width: 8px;
+        height: 12px;
+        background: url('~@this/assets/images/svg/up.png') no-repeat;
+        background-size: cover;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        animation-name: breath;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+    &.odd-item:not(.disabled).down.down {
+      @include useTheme {
+        background: getVar('dpDownBackground');
+      }
+      .odd {
+        @include useTheme {
+          color: getVar('dpDown');
+        }
+      }
+      &:after {
+        content: '';
+        width: 8px;
+        height: 12px;
+        background: url('~@this/assets/images/svg/down.png') no-repeat;
+        background-size: cover;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        position: absolute;
+        animation-name: breath;
+        animation-duration: 2s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+  .bd-list_bg {
+    .odd-item {
+      @include useTheme {
+        background: getVar('dpForm1');
+      }
+    }
+  }
+  .oddItemEmpty {
+    padding: 5px 0 3px 0;
+    display: grid;
+    grid-template-columns: repeat(3,91px);
+    grid-template-rows: repeat(3,34px);
+    gap: 1px;
+    > span {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      @include useTheme {
+        color: getVar('dpNormal');
+        background: getVar('dpForm2');
+      }
+
+    }
+  }
+  .oddItemEmpty_bg {
+    margin-right: 1px;
+    > span {
+      @include useTheme {
+        color: getVar('dpNormal');
+        background: getVar('dpForm1');
+      }
+
+    }
+  }
+
+}

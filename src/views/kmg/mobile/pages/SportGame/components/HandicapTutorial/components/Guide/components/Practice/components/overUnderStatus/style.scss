@@ -1,0 +1,72 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    position: relative;
+    width: 147px;
+    height: 71px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border-radius: 8px;
+    border: 1px solid rgba(175, 175, 175, 0.20);
+
+    &.under-border {
+        border: 2px solid #179CFF;
+    }
+
+    &.over-border {
+        border: 2px solid #F53F3F;
+    }
+
+    &.under-bg {
+        background: rgba(23, 156, 255, 0.10);
+    }
+
+    &.over-bg {
+        background: rgba(245, 63, 63, 0.10);
+    }
+
+    img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+    }
+
+    .text {
+        height: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+
+        @include useTheme {
+            color: getVar('dpOverUnderText');
+        }
+    }
+
+    .value {
+        height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .rotate {
+            transform: rotate(-180deg);
+        }
+
+        span {
+            font-size: 18px;
+            font-weight: 500;
+            color: #F53F3F;
+
+            &.under {
+                color: #00B42A;
+            }
+
+
+        }
+    }
+}

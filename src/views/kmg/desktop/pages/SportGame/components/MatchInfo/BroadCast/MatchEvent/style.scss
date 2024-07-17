@@ -1,0 +1,153 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.dpMatchEvent) {
+  position: relative;
+  display: flex;
+
+  .body {
+    position: relative;
+    width: 820px;
+    height: 100%;
+    .time-bar {
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      border: none;
+      transform: translateX(-50%);
+      top: 0;
+      @include useTheme {
+        background: getVar('dpDivide');
+      }
+    }
+    .event-item {
+      position: relative;
+      margin-bottom: 30px;
+      width: 100%;
+      display: flex;
+      flex-flow: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      .time-bolck{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        width: 42px;
+        height: 32px;
+        flex-shrink: 0;
+        text-align: center;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 32px;
+        @include useTheme {
+          background-color: getVar('dp_Card');
+          color: getVar('dp_strong');
+        }
+      }
+    }
+  }
+  .left-side,
+  .right-side {
+    width: 341px;
+    border-radius: 2px;
+    @include useTheme {
+      background-color: getVar('dpForm2');
+    }
+    min-height: 48px;
+    .event-img {
+      padding: 0 10px;
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .content {
+      font-size: 16px;
+      font-weight: 500;
+
+      @include useTheme {
+        color: getVar('dpStrong');
+      }
+
+      .text {
+        margin-bottom: 4px;
+      }
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 13px;
+
+      @include useTheme {
+        border-color: transparent transparent transparent getVar('dpForm2');
+      }
+    }
+
+    transition: opacity 3s;
+  }
+
+  .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      font-size: 14px;
+      font-weight: 400;
+      width: 100%;
+    }
+    .score {
+      font-size: 16px;
+      font-weight: 500;
+      float: right;
+      text-align: center;
+      width: 50px;
+      padding: 1px 7px;
+      border-radius: 20px;
+    }
+
+    &::after {
+      right: -12px;
+    }
+  }
+
+  .right-side {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      font-size: 14px;
+      font-weight: 400;
+      width: 100%;
+    }
+
+    .score {
+      font-size: 16px;
+      font-weight: 500;
+      float: left;
+      text-align: center;
+      width: 50px;
+      padding: 1px 7px;
+      border-radius: 20px;
+    }
+
+    &::after {
+      left: -12px;
+      transform: rotate(-180deg);
+    }
+  }
+}

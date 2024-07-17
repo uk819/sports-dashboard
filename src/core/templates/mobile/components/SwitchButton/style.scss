@@ -1,0 +1,47 @@
+@import '~@style/mixins/index.scss';
+
+:local(.wrapper) {
+  padding: 0 2px;
+  @include useTheme {
+    background: getVar('footerBg');
+  }
+  border-radius: 20px;
+  .switch-body{
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 24px;
+    justify-content: space-around;
+  }
+  .item{
+    @include useTheme {
+      color: getVar('dpNormal');
+    }
+    font-family: PingFang SC;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  img {
+    max-width: 16px; 
+  }
+  .up-btn{
+    position: absolute;
+    padding: 4px 0;
+    text-align: center;
+    border-radius: 12px;
+    transition: .1s;
+    @include useTheme {
+      color: getVar('dpStrong');
+      background: getVar('dpSwitchActBg');
+    }
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

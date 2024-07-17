@@ -1,0 +1,71 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+  display: flex;
+  align-items: center;
+  padding: 4px 6px;
+  box-sizing: border-box;
+  justify-content: space-between;
+  @include useTheme {
+    background: getVar('dpTopBackground');
+  }
+  .dp-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .switch-btn {
+    padding: 2px;
+    margin-right: 10px;
+    @include useTheme {
+      background: getVar('dpSwitchBtnBg');
+    }
+    .up-btn {
+      transition: all 0.2s ease-in-out;
+      @include useTheme {
+        box-shadow: getVar('dpSwitchBtnShadow');
+      }
+    }
+  }
+  .league-search {
+    flex: 1;
+    height: 28px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    @include useTheme {
+      border-radius: 14px;
+      color: getVar('dpNormal');
+      border: .5px solid getVar('dpAncillary');
+    }
+    > div {
+      flex: 1;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      padding-left: 10px;
+      .ant-input {
+        width: 100%;
+        box-shadow: none;
+        box-sizing: border-box;
+        padding: 7px 11px;
+        @include useTheme {
+          border: 0.5px solid getVar('dpAncillary');
+          &:focus {
+            border-color: getVar('dpTheme');
+          }
+        }
+      }
+    }
+  }
+  .cancel {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    width: 60px;
+    padding: 0 5px;
+    border-radius: 12px;
+    text-align: center;
+    @include useTheme {
+      color: #fff;
+      background: getVar('switchBtnBg2')!important;
+    }
+  }
+}

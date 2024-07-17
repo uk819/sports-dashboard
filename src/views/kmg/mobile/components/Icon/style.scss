@@ -1,0 +1,99 @@
+:local(.dp_icon) {
+  display: flex;
+  position: relative;
+  line-height: 1;
+  .init-not-collect {
+    content: url('./i/collect/sc_21.png');
+  }
+  .init-collect {
+    content: url('./i/collect/sc_32.png');
+  }
+  .active-collect {
+    animation: active-collect 1s forwards;
+  }
+  .inactive-collect {
+    animation: inactive-collect 1s forwards;
+  }
+  .inactive-noanimation {
+    content: url('./i/collect/sc_21.png');
+  }
+  .active-noanimation {
+    content: url('./i/collect/sc_32.png');
+  }
+  @keyframes active-collect {
+    0% {
+    content: url('./i/collect/sc_21.png');
+    }
+    9% {
+      content: url('./i/collect/sc_22.png');
+    }
+    18% {
+      content: url('./i/collect/sc_23.png');
+    }
+    27% {
+      content: url('./i/collect/sc_24.png');
+    }
+    36% {
+      content: url('./i/collect/sc_25.png');
+    }
+    45% {
+      content: url('./i/collect/sc_26.png');
+    }
+    56% {
+      content: url('./i/collect/sc_27.png');
+    }
+    64% {
+      content: url('./i/collect/sc_28.png');
+    }
+    73% {
+      content: url('./i/collect/sc_29.png');
+    }
+    82% {
+      content: url('./i/collect/sc_30.png');
+    }
+    91% {
+      content: url('./i/collect/sc_31.png');
+    }
+    100% {
+      content: url('./i/collect/sc_32.png');
+    }
+  }
+  @keyframes inactive-collect {
+    0% {
+    content: url('./i/collect/sc_32.png');
+    }
+    9% {
+      content: url('./i/collect/sc_31.png');
+    }
+    18% {
+      content: url('./i/collect/sc_30.png');
+    }
+    27% {
+      content: url('./i/collect/sc_29.png');
+    }
+    36% {
+      content: url('./i/collect/sc_28.png');
+    }
+    45% {
+      content: url('./i/collect/sc_27.png');
+    }
+    56% {
+      content: url('./i/collect/sc_26.png');
+    }
+    64% {
+      content: url('./i/collect/sc_25.png');
+    }
+    73% {
+      content: url('./i/collect/sc_24.png');
+    }
+    82% {
+      content: url('./i/collect/sc_23.png');
+    }
+    91% {
+      content: url('./i/collect/sc_22.png');
+    }
+    100% {
+      content: url('./i/collect/sc_21.png');
+    }
+  }
+}

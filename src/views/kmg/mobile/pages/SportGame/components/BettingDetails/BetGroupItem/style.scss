@@ -1,0 +1,93 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper) {
+  .other-title {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    > * {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  .bet-group-item {
+    margin: 0 5px;
+    border-radius: 4px;
+    @include useTheme {
+      background: getVar('leagueItemBg');
+      border-bottom: .5px solid getVar('dpDivide');
+    }
+    .content-wrapper {
+      padding: 10px;
+    }
+  }
+  .bd-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .market-item {
+    margin-bottom: 6px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &.col-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+    &.col-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+    }
+  }
+
+  .collapse-header {
+    border-bottom: none!important;
+    &:not(.border-bottom) {
+      .icon {
+        transform: rotate(-270deg)!important;
+      }
+    }
+    .play-name {
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 15px;
+      position: relative;
+      font-weight: 500;
+      font-size: 12px;
+      margin-top: 5px;
+      border-radius: 4px 4px 0 0;
+      @include useTheme {
+        border-bottom: .5px solid getVar('dpDivide');
+        background: getVar('dpForm2');
+      }
+      .actions {
+        position: absolute;
+        right: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-right: 12px;
+        .icon {
+          transition: .2s;
+          transform: rotate(-90deg);
+        }
+      }
+      // &::after {
+      //   content: '';
+      //   position: absolute;
+      //   left: 10px;
+      //   top:7px;
+      //   width: 2px;
+      //   height: 14px;
+      //   background-repeat: no-repeat;
+      //   background-size: contain;
+      //   background-position: center center;
+      //   background-image: url('~@this/assets/images/common/title-line.png');
+      // }
+    }
+  }
+}

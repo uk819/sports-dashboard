@@ -1,0 +1,47 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.wrapper) {
+  flex: 1;
+  overflow-y: auto;
+  border-radius: 4px;
+  margin-top: 4px;
+  @include useTheme {
+    background: getVar('dpCar');
+  }
+  .search-match-type {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    font-weight: 500;
+    font-size: 13px;
+    @include useTheme {
+      background: getVar('dpPlayTypeBg');
+      color: getVar('dpTheme');
+    }
+    position: sticky;
+    top: 0;
+    .clear {
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 12px;
+      @include useTheme {
+        color: getVar('dpNormal');
+      }
+    }
+  }
+  .search-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    @include useTheme {
+      border-bottom: .5px solid getVar('dpDivide');
+      color: getVar('dpNormal');
+    }
+    p:nth-child(2) {
+      margin-top: 6px;
+    }
+  }
+  .match-list {
+    padding-bottom: 30px;
+  }
+}

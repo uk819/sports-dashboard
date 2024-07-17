@@ -1,0 +1,105 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    width: 326px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 12px;
+
+    &.border {
+        @include useTheme {
+            border-bottom: 1px solid getVar('dpTutorialBorder');
+        }
+    }
+
+    .subtitle {
+        height: 13px;
+        font-size: 13px;
+        text-align: center;
+        @include useTheme {
+        color: getVar('dpOverUnderText');
+        }
+    }
+
+    .team {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .display {
+        height: 76px;
+        padding: 0 42px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+
+        .score {
+            font-family: Akrobat;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 3px;
+            @include useTheme {
+            color: getVar('dpTutorialText');
+            }
+        }
+
+        .describe {
+            font-size: 12px;
+            @include useTheme {
+            color: getVar('dpScoreText');
+            }
+        }
+        }
+
+        .team-item {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        text-align: center;
+        font-size: 14px;
+
+        p {
+            font-weight: 500;
+            margin-block: 4px;
+            @include useTheme {
+            color: getVar('dpTutorialText');
+            }
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+            margin: auto;
+        }
+        .status {
+            width: fit-content;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: #AFAFAF;
+            border-radius: 6px;
+            border: 0.5px solid rgba(175, 175, 175, 0.10);
+            background-color: rgba(175, 175, 175, 0.10);
+            padding: 1px 4px;
+            margin: auto;
+        }
+
+        .win {
+            color: #F53F3F;
+            border-color: rgba(245, 63, 63, 0.10);
+            background: rgba(245, 63, 63, 0.10);
+        }
+
+        .lose {
+            color: #00B42A;
+            border-color: rgba(0, 180, 42, 0.10);
+            background: rgba(0, 180, 42, 0.10);
+        }
+        }
+    }
+}

@@ -1,0 +1,148 @@
+@import '~@style/mixins/index.scss';
+:local(.seriesCartwrapper){
+  overflow: hidden;
+  .series-list{
+    width: 100%;
+    li{
+      height: 80px;
+      background: #3586FF;
+      width: 100%;
+    }
+  }
+  .series-list-wrap{
+    max-height: calc(95vh - 520px);
+    overflow-y: auto;
+    .series-checked{
+      border: 0.5px solid getVar('dpTheme') !important;
+    }
+    .series-item{
+      height: 53px;
+      gap: 4px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 6px;
+      padding: 10px;
+      box-sizing: border-box;
+      @include useTheme {
+        color: getVar('dpNormal');
+        border: 0.5px solid getVar('footerBorderColor');
+      }
+      .series-info{
+        display: flex;
+        flex-flow: column;
+        span:nth-child(1){
+          margin-bottom: 6px;
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+          em:nth-child(1){
+            margin-right: 6px;
+          }
+        }
+      }
+      .input-wrap{
+        position: relative;
+        width: 137px;
+        height: 36px;
+        padding: 10px 10px 10px 15px;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 11px;
+        .x-wrap{
+          position: absolute;
+          left: -35px;
+          top: 50%;
+          transform: translateY(-50%);
+          @include useTheme {
+            color: getVar('dpStrong');
+          }
+        }
+        @include useTheme {
+          color:getVar('dpNormal');
+          background:getVar('dpBasicWhite');
+          border: 1px solid rgba(167, 175, 187, 0.60);
+        }
+        .cursor{
+          border-left: 2px solid #3586FF;
+          animation: blink 1s infinite;
+        }
+        .clear{
+          position: absolute;
+          top: 50%;
+          right: 8px;
+          transform: translate(0, -50%);
+          @include useTheme {
+            color:getVar('dpTheme');
+          }
+        }
+      }
+    }
+  }
+  .total-wrap{
+    height: 60px;
+    position: relative;
+    gap: 4px;
+    margin-bottom: 4px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    border-radius: 6px;
+    padding: 10px;
+    @include useTheme {
+      color: getVar('dpNormal');
+      border: 0.5px solid getVar('footerBorderColor');
+    }
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    .bet-and-win-amount{
+      display: flex;
+      justify-content: space-between;
+      div{
+        display: flex;
+        flex-flow: column;
+        span:nth-child(1){
+          margin-bottom: 12px;
+        }
+      }
+    }
+    .series-invaild-alert{
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      text-align: center;
+      font-size: 12px;
+      color: #ff2a2a;
+    }
+    .text-right{
+      text-align: right;
+    }
+    .total-income{
+      @include useTheme {
+        color: getVar('dpTheme');
+      }
+    }
+    .more{
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      @include useTheme {
+        color: getVar('dpTheme');
+      }
+      svg{
+        margin-left: 4px;
+        transform: scale(1.2);
+      }
+    }
+  }
+  .series-less-alert{
+    text-align: center;
+    font-size: 12px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    color: #ff2a2a;
+  }
+}

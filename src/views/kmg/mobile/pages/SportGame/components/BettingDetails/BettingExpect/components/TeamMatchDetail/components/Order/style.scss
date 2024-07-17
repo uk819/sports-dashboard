@@ -1,0 +1,120 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    overflow: hidden;
+    flex: 1;
+    border-radius: 16px 16px 0px 0px;
+    .detail-panel {
+      margin: 8px 6px;
+      border-radius: 6px;
+      @include useTheme {
+        background-color: getVar('dpCard');
+        border-bottom: 0.5px solid getVar('dpCardBorder');
+        color: getVar('dpStrong');
+      }
+      padding: 0 10px;
+      .content-header, .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 26px;
+        @include useTheme{
+          border-bottom: 1px solid getVar('dpDivide');
+        }
+        .rank {
+          width: 142px;
+          padding: 2px 10px;
+          text-align: left;
+        }
+        .match {
+          padding: 2px 9px;
+        }
+        .win-detail {
+          width: 66px;
+        }
+        .goal {
+          width: 45px;
+        }
+        .score {
+          width: 42px;
+        }
+        .win-rate {
+          width: 40px;
+        }
+        @include useTheme {
+          color: getVar('dpAncillary');
+        }
+        text-align: center;
+        font-family: "PingFang SC";
+        font-size: 10px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+      }
+      .content {
+        position: relative;
+        font-family: "DIN Pro";
+        font-size: 11px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 22px;
+        letter-spacing: 1px;
+        &:last-child {
+          border: 0px;
+        }
+        height: 44px;
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+        .rank {
+          padding: 11px 4px 11px 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          >.rank {
+            width: 15px;
+            text-align: left;
+            font-family: "PingFang SC";
+            font-size: 10px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+          }
+          >.team-img {
+            background-image: url('../../i/team1.webp');
+            width: 22px;
+            height: 22px;
+            background-size: cover;
+
+          }
+          >.team-name {
+            width: 75px;
+            font-family: "PingFang SC";
+            font-size: 11px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 16px;
+          }
+        }
+        .match {
+          text-align: center;
+          font-family: "DIN Pro";
+          font-size: 11px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 22px;
+        }
+        .win-detail {
+          .win {
+            @include useTheme {
+              color: getVar('dpRed');
+            }
+          }
+          .defeat {
+            @include useTheme {
+              color: getVar('dpGreen');
+            }
+          }
+        }
+      }  
+    }
+}

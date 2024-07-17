@@ -1,0 +1,348 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+.ant-picker-time-panel{
+    display: none !important;
+}
+.ant-select-dropdown:has(.select-header) {
+  width: 300px !important;
+  padding: 0 !important;
+  font-family: "PingFang SC";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  .select-header {
+    display: flex;
+    gap: 16px;
+    font-size: 12px;
+    padding: 15px;
+    .ant-radio-wrapper {
+      margin: 0 !important;
+      @include useTheme {
+        color: getVar('dp_tip_notice_modal_title_color');
+      }
+      >span:last-of-type {
+        padding-inline: 4px 0;
+      }
+    }
+  }
+  .rc-virtual-list-holder-inner {
+    @include useTheme {
+      background: getVar('dp_dropdown_collaspe');
+    }
+    .ant-select-item {
+      padding: 9px 15px;
+      .ant-select-item-option-content {
+        @include useTheme {
+          color: getVar('dp_tip_notice_modal_title_color');
+        }
+      }
+      &.ant-select-item-option-selected {
+        background: transparent !important;
+      }
+      &:hover {
+        @include useTheme {
+          background: transparent !important;
+        }
+      }
+    }
+    .ant-select-item-option-state {
+      display: none;
+    }
+    .ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+      background-color: transparent !important;
+    }
+  }
+  .select-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 12px;
+    @include useTheme {
+      color: getVar('dp_tip_notice_modal_title_color') !important;
+    }
+    .count {
+      font-family: DINPro;
+      padding: 10px 15px;
+      span.selected {
+        @include useTheme {
+          color: getVar('dpTheme');
+        }
+      }
+    }
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      padding: 4px 15px 12px 15px;
+      gap: 15px;
+      .ant-btn {
+        width: 64px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+        text-align: center;
+        font-family: "PingFang SC";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        @include useTheme {
+          color: getVar('dpBasicWhite');
+          background: getVar('dpTheme');
+        }
+        &:nth-of-type(1) {
+          border: 1px solid getVar('dpOutline');
+          @include useTheme {
+            color: getVar('dp_tip_notice_modal_title_color');
+            background: transparent;
+          }
+        }
+        &.ant-btn-default {
+          box-shadow: none !important;
+          &:last-of-type {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}
+:local(.wrapper) {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+  font-size: 12px;
+  line-height: 12px;
+  >div.action-bar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    >div.action-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+
+      >.game-select {
+        display: flex;
+        padding: 7px 10px;
+        align-items: center;
+        gap: 45px;
+        border-radius: 13px;
+        @include useTheme {
+          background: getVar('dpCar');
+        }
+
+        >.flex.items-center {
+          gap: 60px;
+
+          svg.icon-arrow {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+      .ant-space-compact {
+        width: 269px;
+        height: 26px;
+        font-family: "PingFang SC";
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 12px;
+        .ant-input {
+          &:focus {
+            box-shadow: none;
+          }
+          &::placeholder {
+            @include useTheme {
+              color: getVar('dpNormal');
+            }
+          }
+        }
+        .ant-input-affix-wrapper {
+          &.ant-input-outlined:focus-within {
+            box-shadow: none !important;
+            @include useTheme {
+              border: 1px solid getVar('dpTheme') !important;
+            }
+          }
+          .ant-input-prefix {
+            position: relative;
+            span.anticon {
+              margin-inline-end: 4px;
+            }
+            margin-inline-end: 0;
+            padding-right: 8px;
+            @include useTheme {
+              color: getVar('dpNormal');
+            }
+            &::before {
+              position: absolute;
+              right: -1px;
+              content: '|';
+            }
+          }
+        }
+        .game-event {
+          display: flex;
+          // padding: 7px 10px;
+          align-items: center;
+          font-size: 12px;
+          gap: 8px;
+          border: none;
+          border-radius: 13px;
+          @include useTheme {
+            color: getVar('dpNormal');
+            background: getVar('dpCar');
+          }
+          &.is-button {
+            border-radius: 13px 0 0 13px;
+          }
+          &:before {
+            display: none;
+          }
+        }
+        .ant-btn {
+          height: 100%;
+          box-sizing: border-box;
+          padding: 0 8px;
+          border-radius: 0 13px 0 13px 0;
+          font-size: 12px;
+          @include useTheme {
+            color: getVar('dpBasicWhite');
+            background: getVar('dpTheme');
+          }
+        }
+      }
+      .league-select {
+        width: 150px;
+        height: 26px;
+        .ant-select {
+          width: 100%;
+          &.ant-select-focused {
+            .ant-select-selector {
+              @include useTheme {
+                border: .5px solid getVar('dpTheme');
+                box-shadow: none;
+              }
+            }
+          }
+          height: 100%;
+          .ant-select-selector {
+            border-radius: 13px;
+            font-family: "PingFang SC";
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 12px;
+            border: none;
+            @include useTheme {
+              background: getVar('dpCar');
+            }
+            .ant-select-selection-overflow {
+              // display: none;
+              max-width: 78px !important;
+              height: 20px;
+              display: flex;
+              gap: 4px;
+              overflow: hidden;
+              flex-wrap: nowrap !important;
+              margin-bottom: 6px;
+              .ant-select-selection-item {
+                margin: 0 !important;
+                padding-inline: 2px;
+                .ant-select-selection-item-content {
+                  margin: 0 !important;
+                  .ant-checkbox-wrapper {
+                    display: none !important;
+                  }
+                }
+              }
+            }
+            .ant-select-selection-placeholder {
+              @include useTheme {
+                color: getVar('dpNormal');
+              }
+              
+            }
+          }
+          .ant-select-arrow {
+            .icon-group {
+              display: flex;
+              align-items: center;
+              @include useTheme {
+                color: getVar('dp_tip_notice_modal_title_color');
+              }
+              &.selected {
+                @include useTheme {
+                  color: getVar('dpTheme');
+                }
+              }
+              .arrow-icon {
+                display: flex !important;
+                align-items: center;
+              }
+            }
+          }
+        }
+      }
+      input {
+        @include useTheme {
+          color: getVar('dpStrong');
+        }
+      }
+
+      input[type="checkbox"] {
+        stroke-width: 1px;
+        @include useTheme {
+          stroke: getVar('dpOutline');
+        }
+      }
+    }
+
+    >.ant-checkbox-wrapper {
+      align-items: center;
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
+  >div.helper-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    .helper-btn {
+      flex-shrink: 0;
+      border: none;
+      background: inherit;
+      display: flex;
+      padding: 0;
+    }
+
+    .search-btn {
+      display: inline-flex;
+      height: 26px;
+      padding: 4px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 4px;
+      border: none;
+      @include useTheme {
+        color: getVar('dpBasicWhite');
+        background: getVar('dpTheme');
+      }
+
+      span {
+        font-size: 12px;
+        line-height: 18px;
+        
+      }
+    }
+  }
+}

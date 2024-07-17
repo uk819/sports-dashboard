@@ -1,0 +1,233 @@
+@import '~@core/templates/desktop/styles/mixins/index.scss';
+
+:local(.dpMatchEvent) {
+  position: relative;
+  display: flex;
+  padding: 11px;
+
+  .body {
+    width: 100%;
+
+    .time-bar {
+      width: 2px;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      border: none;
+      transform: translateX(-50%);
+      top: 0;
+      @include useTheme {
+        background: getVar('dpDivide');
+      }
+
+      .timer-img{
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 4px;
+        height: 4px;
+        border-radius: 100%;
+        @include useTheme {
+          background-color:  getVar('dpTheme');
+        }
+        bottom: -4px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .event-item {
+      position: relative;
+      margin-bottom: 30px;
+      width: 100%;
+      display: flex;
+      flex-flow: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      .time-bolck{
+        white-space: nowrap;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        text-align: center;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        @include useTheme {
+          background-color: getVar('dpCard');
+          color: getVar('dpStrong');
+        }
+      }
+    }
+  }
+
+  .left-side,
+  .right-side {
+    width: 136px;
+    border-radius: 6px;
+    @include useTheme {
+      background-color: getVar('dpForm2');
+    }
+    min-height: 48px;
+
+    .event-img {
+      padding: 0 10px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    .content {
+      padding: 8px 8px 8px 0px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      @include useTheme {
+        color: getVar('dpStrong');
+      }
+
+      .text {
+        margin-bottom: 4px;
+        overflow: hidden;
+       font-size: 10px;
+      }
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 6px 0 6px 13px;
+
+      @include useTheme {
+        border-color: transparent transparent transparent getVar('dpForm2');
+      }
+    }
+  }
+
+  .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    .content{
+      padding: 8px 0px 8px 8px;
+      justify-content: right;
+      .score {
+        font-size: 12px;
+        font-weight: 500;
+        float: right;
+        text-align: center;
+        width: 32px;
+        padding: 1px 7px;
+        border-radius: 20px;
+        @include useTheme{
+          background-color: rgba(getVar('dpNormal'), 0.1);
+        }
+      }
+    }
+
+
+    .event-img{
+      border-width: 0 0 0 1px;
+    }
+    &::after {
+      right: -12px;
+    }
+  }
+
+  .right-side {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .score {
+      font-size: 12px;
+      font-weight: 500;
+      float: right;
+      text-align: center;
+      width: 32px;
+      padding: 1px 7px;
+      border-radius: 20px;
+      @include useTheme{
+        background-color: rgba(getVar('dpNormal'), 0.1);
+      }
+    }
+
+    .event-img{
+      border-width: 0 1px 0 0;
+    }
+
+    &::after {
+      left: -12px;
+      transform: rotate(-180deg);
+    }
+  }
+
+  .central-side{
+    width: 40%;
+    margin: auto;
+    margin-top: 6px;
+    @include useTheme{
+      background-color: getVar('dpNormal');
+      border-color: getVar('dpTheme');
+      border-width: 1px;
+      border-style: solid;
+    }
+    border-radius: 20px;
+
+    .content{
+      margin: 12px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      .event-img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .text{
+        font-size: 12px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+    // &::after {
+    //   position: absolute;
+    //   content: '';
+    //   width: 0;
+    //   height: 0;
+    //   border-style: solid;
+    //   border-width: 6px 0 6px 13px;
+
+    //   @include useTheme {
+    //     border-color: transparent transparent transparent rgba(getVar('dpNormal'), 0.5);
+    //   }
+    //   top: 7px;
+    //   left: 50%;
+    //   transform: translate(-50%, -50%) rotate(-90deg);
+    // }
+  }
+}

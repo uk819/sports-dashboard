@@ -1,0 +1,68 @@
+@import '~@style/mixins/index.scss';
+:local(.wrapper){
+    font-family: "PingFang SC";
+    text-align: center;
+    padding: 0 12px;
+    height: 100%;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+        display: none;
+    } 
+
+    .statement {
+        width: 224px;
+        height: 44px;
+        margin: auto;
+        margin-bottom: 12px;
+        text-align: center;
+        font-family: "PingFang SC";
+        font-size: 13px;
+        line-height: 22px;
+        @include useTheme {
+            color: getVar('dpTutorialText');
+        }
+    }
+    >div:nth-child(2) {
+    .container {
+        
+        .detail {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+
+        }
+
+        .btns {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 23px;
+            padding-top: 28px;
+
+            .practice {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    font-size: 16px;
+                    font-weight: 600;
+
+                    @include useTheme {
+                        color: getVar('dpTutorialText');
+                    }
+                }
+
+                img {
+                    width: 12px;
+                }
+
+            }
+        }
+
+    }
+
+}
+    
+}

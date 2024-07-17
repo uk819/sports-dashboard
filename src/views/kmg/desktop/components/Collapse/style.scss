@@ -1,0 +1,18 @@
+@import '~@this/styles/theme/index.scss';
+:local(.dp_collapse) {
+  .collapse-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px 0 0;
+  }
+  .content {
+    overflow: hidden;
+  }
+  .pushpin{
+    @include useTheme{
+      color: getVar('dpTheme');
+    }
+  }
+}
